@@ -146,11 +146,16 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                condb.connect();
-                string sql = "DELETE FROM Khach Where MaKhach='"+tbmakh.Text+"'";
-                condb.ExecuteNonQuery(sql);
-                MessageBox.Show("Xóa Thành Công!!");
-                showData();
+                DialogResult result = MessageBox.Show("Bạn có muốn xóa " + tbtenkh.Text + "Không ?", "Thông Báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    condb.connect();
+                    string sql = "DELETE FROM Khach Where MaKhach='" + tbmakh.Text + "'";
+                    condb.ExecuteNonQuery(sql);
+                    MessageBox.Show("Xóa Thành Công!!");
+                    showData();
+                }
+                
             }
             catch
             {
