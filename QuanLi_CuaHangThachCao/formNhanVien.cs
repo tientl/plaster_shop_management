@@ -48,12 +48,11 @@ namespace QuanLi_CuaHangThachCao
         }
         private void ResetTextBox()//Reset trắng nội dung các TextBox, gán dữ liệu ban đầu cho RadioButton, DateTimPickup
         {
-            tbmahang.Clear();
-            tbtenhang.Clear();
-            tbtenChatlieu.Clear();
-            tbsoluong.Clear();
-            tbDonGiaBan.Clear();
-            tbDonGiaNhap.Clear();
+            tbdiachi.Clear();
+            tbdienthoai.Clear();
+            tbmakh.Clear();
+            tbtenkh.Clear();
+                        
 
         }
         public formNhanVien()
