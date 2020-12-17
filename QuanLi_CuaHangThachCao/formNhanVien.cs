@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//hello
 namespace QuanLi_CuaHangThachCao
 {
     public partial class formNhanVien : Form
