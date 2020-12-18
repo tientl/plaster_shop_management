@@ -33,6 +33,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void SetViewing()
         {
+            tbmahang.Enabled = false;
             dgvhanghoa.Enabled = true;
             btLuu.Enabled = false;
             btthem.Enabled = true;
@@ -43,17 +44,20 @@ namespace QuanLi_CuaHangThachCao
         private void SetEditing()
         {
             ResetTextBox();
+            tbmahang.Enabled = true;
+            tbtenhang.Focus();
             btxoa.Enabled = false;
             btsua.Enabled = false;
             btthem.Enabled = false;
             btLuu.Enabled = true;
             btthoat.Text = "Hủy";
+            
         }
         private void ResetTextBox()//Reset trắng nội dung các TextBox, gán dữ liệu ban đầu cho RadioButton, DateTimPickup
         {
             tbmahang.Clear();
             tbtenhang.Clear();
-            tbtenChatlieu.Clear();
+            cbChatLieu.Text = "";
             tbsoluong.Clear();
             tbDonGiaBan.Clear();
             tbDonGiaNhap.Clear();
@@ -69,7 +73,12 @@ namespace QuanLi_CuaHangThachCao
 
         private void formHangHoa_Load(object sender, EventArgs e)
         {
-            
+            string sql = "SELECT * FROM ChatLieu ";
+            DataTable dt = condb.getDataTable(sql);
+            cbChatLieu.DataSource = dt;
+            cbChatLieu.ValueMember = "MaChatLieu";
+            cbChatLieu.DisplayMember = "TenChatLieu";
+            cbChatLieu.Show();
         }
         public void showData()
         {
@@ -89,9 +98,10 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                TrangThai = FState.IsEditing;
-                groupBox1.Enabled = true;
                 SetEditing();
+                TrangThai = FState.IsEditing;
+                groupBox1.Enabled = true;              
+                AutoUp();
                 dgvhanghoa.Enabled = false;
             }
             catch (Exception E)
@@ -109,10 +119,10 @@ namespace QuanLi_CuaHangThachCao
                 int VT = 0;
                 if (VT != null && VT >= 0)
                 {
-                    VT = dgvhanghoa.CurrentCell.RowIndex;
+                    VT = dgvhanghoa.CurrentCell.RowIndex; 
                     tbmahang.Text = dgvhanghoa.Rows[VT].Cells[0].Value.ToString();
                     tbtenhang.Text = dgvhanghoa.Rows[VT].Cells[1].Value.ToString();
-                    tbtenChatlieu.Text = dgvhanghoa.Rows[VT].Cells[2].Value.ToString();
+                    cbChatLieu.Text = dgvhanghoa.Rows[VT].Cells[2].Value.ToString();
                     tbsoluong.Text = dgvhanghoa.Rows[VT].Cells[3].Value.ToString();
                     tbDonGiaNhap.Text = dgvhanghoa.Rows[VT].Cells[4].Value.ToString();
                     tbDonGiaBan.Text = dgvhanghoa.Rows[VT].Cells[5].Value.ToString();
@@ -126,33 +136,40 @@ namespace QuanLi_CuaHangThachCao
 
         private void btLuu_Click(object sender, EventArgs e)
         {
-            
-            if (tbmahang.Text != "" && tbtenhang.Text != "" && tbtenChatlieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
+            try
             {
+                if (tbmahang.Text != "" && tbtenhang.Text != "" && cbChatLieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
+                {
 
-                string sql = "INSERT INTO Hang VALUES(N'" + tbmahang.Text + "',N'" + tbtenhang.Text + "',N'" + tbtenChatlieu.Text + "',N'" + tbsoluong.Text + "',N'" + tbDonGiaNhap.Text + "',N'" + tbDonGiaBan.Text + "')";
-                condb.ExecuteNonQuery(sql);
-                MessageBox.Show("Thêm Thành Công!!");
-                showData();
-                SetViewing();
+                    string sql = "INSERT INTO Hang VALUES(N'" + tbmahang.Text + "',N'" + tbtenhang.Text + "',N'" + cbChatLieu.SelectedValue + "',N'" + tbsoluong.Text + "',N'" + tbDonGiaNhap.Text + "',N'" + tbDonGiaBan.Text + "')";
+                    condb.ExecuteNonQuery(sql);
+                    MessageBox.Show("Thêm Thành Công!!");
+                    showData();
+                    SetViewing();
+                }
+                else
+                {
+                    MessageBox.Show("Hãy nhập thông tin !!");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Hãy nhập thông tin !!");
+                MessageBox.Show("Lỗi dữ liệu hoặc Trùng Mã!!!");
             }
+            
         }
 
         private void btsua_Click(object sender, EventArgs e)
         {
             try
             {
-                if (tbmahang.Text != "" && tbtenhang.Text != "" && tbtenChatlieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
+                if (tbmahang.Text != "" && tbtenhang.Text != "" && cbChatLieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
                 {
                     DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes)
                     {
                         
-                        string sql = "Update Hang Set MaHang =N'" + tbmahang.Text + "',TenHang =N'" + tbtenhang.Text + "',MaChatLieu=N'" + tbtenChatlieu.Text + "',SoLuong =N'" + tbsoluong.Text + "',DonGiaNhap =N'" + tbDonGiaNhap.Text + "',DonGiaBan =N'" + tbDonGiaBan.Text + "'Where MaHang ='" + tbmahang.Text + "'";
+                        string sql = "Update Hang Set MaHang =N'" + tbmahang.Text + "',TenHang =N'" + tbtenhang.Text + "',MaChatLieu=N'" + cbChatLieu.SelectedValue + "',SoLuong =N'" + tbsoluong.Text + "',DonGiaNhap =N'" + tbDonGiaNhap.Text + "',DonGiaBan =N'" + tbDonGiaBan.Text + "'Where MaHang ='" + tbmahang.Text + "'";
                         condb.ExecuteNonQuery(sql);
                         MessageBox.Show("Sửa Thành Công");
                         showData();
@@ -216,7 +233,39 @@ namespace QuanLi_CuaHangThachCao
 
         private void btxoa_Click(object sender, EventArgs e)
         {
-            //
+            try
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn xóa '" + tbtenhang.Text + "' Không ?", "Thông Báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    condb.connect();
+                    string sql = "DELETE FROM Hang Where MaHang='" + tbmahang.Text + "'";
+                    condb.ExecuteNonQuery(sql);
+                    MessageBox.Show("Xóa Thành Công!!");
+                    showData();
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi dữ liệu");
+            }
         }
+        private void AutoUp()
+        {            
+            Random ra = new Random();
+            int ra1 = ra.Next(1, 50);
+            int count = dgvhanghoa.Rows.Count;           
+            if (count > 9)
+            {
+                tbmahang.Text = "H" + count++ + "-"+ra1;
+            }
+            else
+            {
+                tbmahang.Text = "H0" + count++ + "-" + ra1;
+            }
+        }
+
+
     }
 }

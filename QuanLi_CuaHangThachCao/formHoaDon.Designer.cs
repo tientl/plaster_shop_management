@@ -45,8 +45,8 @@
             this.cbxTenHang = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listSanPham = new System.Windows.Forms.ListView();
-            this.label4 = new System.Windows.Forms.Label();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label4 = new System.Windows.Forms.Label();
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dbCuaHangThachCaoDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hDBanBindingSource)).BeginInit();
@@ -153,6 +153,7 @@
             this.cbxTenHang.Name = "cbxTenHang";
             this.cbxTenHang.Size = new System.Drawing.Size(178, 21);
             this.cbxTenHang.TabIndex = 42;
+            this.cbxTenHang.SelectedIndexChanged += new System.EventHandler(this.cbxTenHang_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -207,7 +208,8 @@
             this.Name = "formHoaDon";
             this.Text = "formHoaDon";
             this.Load += new System.EventHandler(this.formHoaDon_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dbCuaHangThachCaoDataSetBindingSource)).EndInit();          
+            ((System.ComponentModel.ISupportInitialize)(this.dbCuaHangThachCaoDataSetBindingSource)).EndInit();
+           
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -50,5 +50,10 @@ namespace QuanLi_CuaHangThachCao
         {
 
         }
+
+        private void cbxTenHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

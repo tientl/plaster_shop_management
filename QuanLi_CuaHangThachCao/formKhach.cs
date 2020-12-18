@@ -34,6 +34,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void SetViewing()
         {
+            tbmakh.Enabled = false;
             dgvkhachhang.Enabled = true;
             btnLuu.Enabled = false;
             btthem.Enabled = true;
@@ -44,6 +45,7 @@ namespace QuanLi_CuaHangThachCao
         private void SetEditing()
         {
             ResetTextBox();
+            tbmakh.Enabled = true;
             btxoa.Enabled = false;
             btsua.Enabled = false;
             btthem.Enabled = false;
@@ -83,9 +85,10 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
+                SetEditing();
                 TrangThai = FState.IsEditing;
                 groupBox1.Enabled = true;
-                SetEditing();
+                AutoUp();
                 dgvkhachhang.Enabled = false;
             }
             catch(Exception E)
@@ -210,10 +213,7 @@ namespace QuanLi_CuaHangThachCao
 
         }
 
-        private void rbmakh_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
         
 
         private void dgvkhachhang_SelectionChanged(object sender, EventArgs e)
@@ -234,8 +234,22 @@ namespace QuanLi_CuaHangThachCao
             catch( Exception a)
             {
                 MessageBox.Show(a.Message);
+            }           
+        }
+
+        private void AutoUp()
+        {
+            Random ra = new Random();
+            int ra1 = ra.Next(1, 50);
+            int count = dgvkhachhang.Rows.Count;
+            if (count > 9)
+            {
+                tbmakh.Text = "H" + count++ + "-" + ra1;
             }
-            
+            else
+            {
+                tbmakh.Text = "H0" + count++ + "-" + ra1;
+            }
 
         }
 

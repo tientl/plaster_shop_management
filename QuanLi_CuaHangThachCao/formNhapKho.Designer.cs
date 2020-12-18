@@ -72,7 +72,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhapKhoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbCuaHang_ThachCaoDataSet)).BeginInit();
+            
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -202,8 +202,8 @@
             // 
             // dbCuaHang_ThachCaoDataSet
             // 
-            this.dbCuaHang_ThachCaoDataSet.DataSetName = "dbCuaHang_ThachCaoDataSet";
-            this.dbCuaHang_ThachCaoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            
+           
             // 
             // bthuy
             // 
@@ -420,7 +420,7 @@
             // 
             // nhapKhoTableAdapter
             // 
-            this.nhapKhoTableAdapter.ClearBeforeFill = true;
+            
             // 
             // formNhapKho
             // 
@@ -443,7 +443,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhapKhoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbCuaHang_ThachCaoDataSet)).EndInit();
+           
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

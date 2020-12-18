@@ -108,7 +108,6 @@
             this.rbmakh.TabStop = true;
             this.rbmakh.Text = "Mã KH";
             this.rbmakh.UseVisualStyleBackColor = true;
-            this.rbmakh.CheckedChanged += new System.EventHandler(this.rbmakh_CheckedChanged);
             // 
             // tbtimkiem
             // 
@@ -293,7 +292,7 @@
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(602, 186);
+            this.btnLuu.Location = new System.Drawing.Point(602, 184);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(80, 28);
             this.btnLuu.TabIndex = 23;

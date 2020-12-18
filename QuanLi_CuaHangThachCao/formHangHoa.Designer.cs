@@ -43,7 +43,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tbsoluong = new System.Windows.Forms.TextBox();
-            this.tbtenChatlieu = new System.Windows.Forms.TextBox();
             this.tbtenhang = new System.Windows.Forms.TextBox();
             this.tbmahang = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.hangTableAdapter = new QuanLi_CuaHangThachCao.dbCuaHang_ThachCaoDataSet1TableAdapters.HangTableAdapter();
             this.btLuu = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbChatLieu = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhanghoa)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbCuaHang_ThachCaoDataSet1)).BeginInit();
@@ -145,12 +145,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbChatLieu);
             this.groupBox1.Controls.Add(this.tbDonGiaBan);
             this.groupBox1.Controls.Add(this.tbDonGiaNhap);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.tbsoluong);
-            this.groupBox1.Controls.Add(this.tbtenChatlieu);
             this.groupBox1.Controls.Add(this.tbtenhang);
             this.groupBox1.Controls.Add(this.tbmahang);
             this.groupBox1.Controls.Add(this.label4);
@@ -208,14 +208,6 @@
             this.tbsoluong.Name = "tbsoluong";
             this.tbsoluong.Size = new System.Drawing.Size(286, 20);
             this.tbsoluong.TabIndex = 4;
-            // 
-            // tbtenChatlieu
-            // 
-            this.tbtenChatlieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbtenChatlieu.Location = new System.Drawing.Point(106, 80);
-            this.tbtenChatlieu.Name = "tbtenChatlieu";
-            this.tbtenChatlieu.Size = new System.Drawing.Size(286, 20);
-            this.tbtenChatlieu.TabIndex = 3;
             // 
             // tbtenhang
             // 
@@ -318,6 +310,15 @@
             this.label6.TabIndex = 27;
             this.label6.Text = "Tìm Kiếm";
             // 
+            // cbChatLieu
+            // 
+            this.cbChatLieu.FormattingEnabled = true;
+            this.cbChatLieu.Location = new System.Drawing.Point(106, 81);
+            this.cbChatLieu.Name = "cbChatLieu";
+            this.cbChatLieu.Size = new System.Drawing.Size(286, 21);
+            this.cbChatLieu.TabIndex = 11;
+            
+            // 
             // formHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,7 +360,6 @@
         private System.Windows.Forms.Button btthem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tbsoluong;
-        private System.Windows.Forms.TextBox tbtenChatlieu;
         private System.Windows.Forms.TextBox tbtenhang;
         private System.Windows.Forms.TextBox tbmahang;
         private System.Windows.Forms.Label label4;
@@ -377,5 +377,6 @@
         private dbCuaHang_ThachCaoDataSet1TableAdapters.HangTableAdapter hangTableAdapter;
         private System.Windows.Forms.Button btLuu;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbChatLieu;
     }
 }

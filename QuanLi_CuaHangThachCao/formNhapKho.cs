@@ -20,7 +20,7 @@ namespace QuanLi_CuaHangThachCao
         private void formNhapKho_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dbCuaHang_ThachCaoDataSet.NhapKho' table. You can move, or remove it, as needed.
-            this.nhapKhoTableAdapter.Fill(this.dbCuaHang_ThachCaoDataSet.NhapKho);
+            
 
         }
     }
