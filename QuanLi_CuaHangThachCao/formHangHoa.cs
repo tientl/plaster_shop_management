@@ -213,5 +213,10 @@ namespace QuanLi_CuaHangThachCao
             }
             dgvhanghoa.Columns[dgvhanghoa.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        private void btxoa_Click(object sender, EventArgs e)
+        {
+            //
+        }
     }
 }
