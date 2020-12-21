@@ -12,6 +12,7 @@ namespace QuanLi_CuaHangThachCao
 {
     public partial class formNhanVien : Form
     {
+        ConnectionDB condb = new ConnectionDB();
         FState trangThai;
         private FState TrangThai
         {
@@ -48,32 +49,137 @@ namespace QuanLi_CuaHangThachCao
         }
         private void ResetTextBox()//Reset trắng nội dung các TextBox, gán dữ liệu ban đầu cho RadioButton, DateTimPickup
         {
-            tbdiachi.Clear();
+            tbdiachinv.Clear();
             tbdienthoai.Clear();
-            tbmakh.Clear();
-            tbtenkh.Clear();
+            tbmanv.Clear();
+            tbtennv.Clear();
                         
 
         }
         public formNhanVien()
         {
             InitializeComponent();
+            TrangThai = FState.IsViewing;
+            showData();
         }
 
         private void formNhanVien_Load(object sender, EventArgs e)
         {
 
-
+            
+        }
+        public void showData()
+        {
+            try
+            {
+                string sql = "SELECT * FROM NhanVien";
+                DataTable dt = condb.getDataTable(sql);
+                dgvNhanVien.DataSource = dt;
+                dgvNhanVien.Show();
+                // Autosize table
+                for (int i = 0; i < dgvNhanVien.Columns.Count - 1; i++)
+                {
+                    dgvNhanVien.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
+                dgvNhanVien.Columns[dgvNhanVien.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            catch
+            {
+                
+            }    
+            
+            
+            
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btthem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SetEditing();
+                TrangThai = FState.IsEditing;
+                groupBox1.Enabled = true;
+                AutoUp();
+                dgvNhanVien.Enabled = false;
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
         }
 
-        private void dgvkhachhang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void AutoUp()
         {
+            throw new NotImplementedException();
+        }
 
+        private void btluu_Click(object sender, EventArgs e)
+        {
+            if (tbmanv.Text != "" && tbtennv.Text != "" && tbdiachinv.Text != "" && tbdienthoai.Text != "")
+            {
+
+                string sql = "INSERT INTO NhanVien VALUES(N'" + tbmanv.Text + "',N'" + tbtennv.Text + "',N'"+rbNam.Checked + "',N'"  + tbdiachinv.Text + "',N'" + tbdienthoai.Text + "',CONVERT(DATE,'"+ dateTimePicker1.Value+"',103))";
+                condb.ExecuteNonQuery(sql);
+                MessageBox.Show("Thêm Thành Công!!");
+                showData();
+                ResetTextBox();
+                SetViewing();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập thông tin !!");
+            }
+        }
+
+        private void btsua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbmanv.Text != "" && tbtennv.Text != "" && tbdiachinv.Text != "" && tbdienthoai.Text != "")
+                {
+                    DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        condb.connect();
+                        string sql = "Update Khach Set NhanVien =N'" + tbmanv.Text + "', TenKhach =N'" + tbtennv.Text + "',GioiTinh = N'" + rbmakh.Checked + "',DiaChi = N'" + tbdiachinv.Text + "',DienThoai = N'" + tbdienthoai.Text +"', NgaySinh = N'" + tbdiachinv.Text + "'Where NhanVien ='" + tbmanv.Text + "'";
+                        condb.ExecuteNonQuery(sql);
+                        MessageBox.Show("Sửa Thành Công");
+                        showData();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Hãy nhập thông tin cần SỬA !!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi Dữ Liệu !!!");
+            }
+        }
+
+        private void dgvNhanVien_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                groupBox1.Enabled = true; // Groupbox thông tin KH mở
+                int VT = 0;
+                if (VT != null && VT >= 0)
+                {
+                    VT = dgvNhanVien.CurrentCell.RowIndex;
+                    tbmanv.Text = dgvNhanVien.Rows[VT].Cells[0].Value.ToString();
+                    tbtennv.Text = dgvNhanVien.Rows[VT].Cells[1].Value.ToString();
+                    rbNam.Text = dgvNhanVien.Rows[VT].Cells[2].Value.ToString();
+                    tbdiachinv.Text = dgvNhanVien.Rows[VT].Cells[3].Value.ToString();
+                    tbdienthoai.Text = dgvNhanVien.Rows[VT].Cells[4].Value.ToString();
+
+                }
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show(a.Message);
+            }
         }
     }
 }
