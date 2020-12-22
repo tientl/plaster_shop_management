@@ -168,7 +168,15 @@ namespace QuanLi_CuaHangThachCao
                     VT = dgvNhanVien.CurrentCell.RowIndex;
                     tbmanv.Text = dgvNhanVien.Rows[VT].Cells[0].Value.ToString();
                     tbtennv.Text = dgvNhanVien.Rows[VT].Cells[1].Value.ToString();
-                    rbNam.Text = dgvNhanVien.Rows[VT].Cells[2].Value.ToString();
+                    if (Boolean.Parse(dgvNhanVien.Rows[VT].Cells[2].Value.ToString()) == true)                    
+                    {
+                        rbNam.Checked = true;
+                    }
+                    else
+                    {
+                        rbNu.Checked = true;
+                    }
+
                     tbdiachinv.Text = dgvNhanVien.Rows[VT].Cells[3].Value.ToString();
                     tbdienthoai.Text = dgvNhanVien.Rows[VT].Cells[4].Value.ToString();
                     dateTimePicker1.Text = dgvNhanVien.Rows[VT].Cells[5].Value.ToString();
@@ -179,5 +187,26 @@ namespace QuanLi_CuaHangThachCao
                 MessageBox.Show(a.Message);
             }
         }
+
+        private void btthoat_Click(object sender, EventArgs e)
+        {
+            if (TrangThai == FState.IsViewing)
+            {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    this.Close();
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn HỦY  ?", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    TrangThai = FState.IsViewing;
+                    groupBox1.Enabled = false;
+                }
+            }
+        }
+
+        
     }
 }
