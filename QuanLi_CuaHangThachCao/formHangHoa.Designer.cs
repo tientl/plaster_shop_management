@@ -55,7 +55,7 @@
             this.hangTableAdapter = new QuanLi_CuaHangThachCao.dbCuaHang_ThachCaoDataSet1TableAdapters.HangTableAdapter();
             this.btLuu = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbChatLieu = new System.Windows.Forms.ComboBox();
+            this.tbtenchatlieu = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhanghoa)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbCuaHang_ThachCaoDataSet1)).BeginInit();
@@ -145,7 +145,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbChatLieu);
+            this.groupBox1.Controls.Add(this.tbtenchatlieu);
             this.groupBox1.Controls.Add(this.tbDonGiaBan);
             this.groupBox1.Controls.Add(this.tbDonGiaNhap);
             this.groupBox1.Controls.Add(this.label8);
@@ -229,7 +229,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 83);
+            this.label4.Location = new System.Drawing.Point(16, 83);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 0;
@@ -264,6 +264,7 @@
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Tên Hàng";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label1
             // 
@@ -310,14 +311,12 @@
             this.label6.TabIndex = 27;
             this.label6.Text = "Tìm Kiếm";
             // 
-            // cbChatLieu
+            // tbtenchatlieu
             // 
-            this.cbChatLieu.FormattingEnabled = true;
-            this.cbChatLieu.Location = new System.Drawing.Point(106, 81);
-            this.cbChatLieu.Name = "cbChatLieu";
-            this.cbChatLieu.Size = new System.Drawing.Size(286, 21);
-            this.cbChatLieu.TabIndex = 11;
-            
+            this.tbtenchatlieu.Location = new System.Drawing.Point(106, 81);
+            this.tbtenchatlieu.Name = "tbtenchatlieu";
+            this.tbtenchatlieu.Size = new System.Drawing.Size(286, 20);
+            this.tbtenchatlieu.TabIndex = 11;
             // 
             // formHangHoa
             // 
@@ -337,7 +336,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "formHangHoa";
-            this.Load += new System.EventHandler(this.formHangHoa_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formHangHoa_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvhanghoa)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -377,6 +376,6 @@
         private dbCuaHang_ThachCaoDataSet1TableAdapters.HangTableAdapter hangTableAdapter;
         private System.Windows.Forms.Button btLuu;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbChatLieu;
+        private System.Windows.Forms.TextBox tbtenchatlieu;
     }
 }

@@ -31,6 +31,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void SetViewing()
         {
+            tbmanv.Enabled = false;
             dgvNhanVien.Enabled = true;
             btluu.Enabled = false;
             btthem.Enabled = true;
@@ -84,7 +85,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void btthem_Click(object sender, EventArgs e)
         {
-
+            tbmanv.Enabled = true;
             SetEditing();
             TrangThai = FState.IsEditing;
             groupBox1.Enabled = true;
@@ -117,9 +118,10 @@ namespace QuanLi_CuaHangThachCao
                 string sql = "INSERT INTO NhanVien VALUES(N'" + tbmanv.Text + "',N'" + tbtennv.Text + "',N'"+rbNam.Checked + "',N'"  + tbdiachinv.Text + "',N'" + tbdienthoai.Text + "',CONVERT(DATE,'"+ dateTimePicker1.Value+"',103))";
                 condb.ExecuteNonQuery(sql);
                 MessageBox.Show("Thêm Thành Công!!");
-                showData();
-                ResetTextBox();
+                showData();                
                 SetViewing();
+                ResetTextBox();
+                TrangThai = FState.IsViewing;
             }
             else
             {
@@ -137,7 +139,7 @@ namespace QuanLi_CuaHangThachCao
                     if (result == DialogResult.Yes)
                     {
                         condb.connect();
-                        string sql = "Update Khach Set NhanVien =N'" + tbmanv.Text + "', TenKhach =N'" + tbtennv.Text + "',GioiTinh = N'" + rbmakh.Checked + "',DiaChi = N'" + tbdiachinv.Text + "',DienThoai = N'" + tbdienthoai.Text +"', NgaySinh = N'" + tbdiachinv.Text + "'Where NhanVien ='" + tbmanv.Text + "'";
+                        string sql = "Update NhanVien Set MaNhanVien =N'" + tbmanv.Text + "', TenNhanVien =N'" + tbtennv.Text + "',GioiTinh = N'" + rbNam.Checked + "',DiaChi = N'" + tbdiachinv.Text + "',DienThoai = N'" + tbdienthoai.Text +"', NgaySinh = CONVERT(DATE,'" + dateTimePicker1.Value +"',103) Where MaNhanVien ='" + tbmanv.Text + "'";
                         condb.ExecuteNonQuery(sql);
                         MessageBox.Show("Sửa Thành Công");
                         showData();
@@ -163,8 +165,9 @@ namespace QuanLi_CuaHangThachCao
             {
                 groupBox1.Enabled = true; // Groupbox thông tin KH mở
                 int VT = 0;
-                if (VT != null && VT >= 0)
-                {
+
+                if (dgvNhanVien.CurrentCell.RowIndex != null )
+                {             
                     VT = dgvNhanVien.CurrentCell.RowIndex;
                     tbmanv.Text = dgvNhanVien.Rows[VT].Cells[0].Value.ToString();
                     tbtennv.Text = dgvNhanVien.Rows[VT].Cells[1].Value.ToString();
@@ -207,6 +210,56 @@ namespace QuanLi_CuaHangThachCao
             }
         }
 
-        
+        private void btxoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn xóa " + tbtennv.Text + "Không ?", "Thông Báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    condb.connect();
+                    string sql = "DELETE FROM NhanVien Where MaNhanVien='" + tbmanv.Text + "'";
+                    condb.ExecuteNonQuery(sql);
+                    MessageBox.Show("Xóa Thành Công!!");
+                    showData();
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi dữ liệu");
+            }
+        }
+
+        private void tbtimkiem_TextChanged(object sender, EventArgs e)
+        {
+            condb.connect();
+            string sql = "";
+            if (rbmanv.Checked)
+            {
+                sql = "SELECT * FROM NhanVien Where MaNhanVien Like N'%" + tbtimkiem.Text + "%'";
+                condb.ExcuteQuery(sql);
+            }
+            if (rbtennv.Checked)
+            {
+                sql = "SELECT * FROM NhanVien Where TenNhanVien Like N'%" + tbtimkiem.Text + "%'";
+                condb.ExcuteQuery(sql);
+            }
+            DataTable dt = condb.getDataTable(sql);
+            dgvNhanVien.DataSource = dt;
+            dgvNhanVien.Show();
+            // Autosize table
+            for (int i = 0; i < dgvNhanVien.Columns.Count - 1; i++)
+            {
+                dgvNhanVien.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dgvNhanVien.Columns[dgvNhanVien.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void formNhanVien_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Main main = new Main();
+            main.Show();
+        }
     }
 }

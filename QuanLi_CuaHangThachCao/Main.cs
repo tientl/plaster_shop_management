@@ -80,6 +80,7 @@ namespace QuanLi_CuaHangThachCao
         {
             formHangHoa frHangHoa = new formHangHoa();
             frHangHoa.Show();
+            this.Hide();
         }
 
         private void btnChatLieu_Click(object sender, EventArgs e)

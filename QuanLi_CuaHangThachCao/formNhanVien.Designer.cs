@@ -30,10 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbtenkh = new System.Windows.Forms.RadioButton();
-            this.rbmakh = new System.Windows.Forms.RadioButton();
+            this.rbtennv = new System.Windows.Forms.RadioButton();
+            this.rbmanv = new System.Windows.Forms.RadioButton();
             this.tbtimkiem = new System.Windows.Forms.TextBox();
-            this.bttimkiem = new System.Windows.Forms.Button();
             this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btluu = new System.Windows.Forms.Button();
             this.btthoat = new System.Windows.Forms.Button();
@@ -41,6 +40,9 @@
             this.btsua = new System.Windows.Forms.Button();
             this.btthem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbNu = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.rbNam = new System.Windows.Forms.RadioButton();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.tbmanv = new System.Windows.Forms.TextBox();
@@ -53,9 +55,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
-            this.rbNam = new System.Windows.Forms.RadioButton();
-            this.rbNu = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -64,39 +64,38 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rbtenkh);
-            this.groupBox2.Controls.Add(this.rbmakh);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.rbtennv);
+            this.groupBox2.Controls.Add(this.rbmanv);
             this.groupBox2.Controls.Add(this.tbtimkiem);
-            this.groupBox2.Controls.Add(this.bttimkiem);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(43, 289);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(616, 45);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tìm Kiếm";
             // 
-            // rbtenkh
+            // rbtennv
             // 
-            this.rbtenkh.AutoSize = true;
-            this.rbtenkh.Location = new System.Drawing.Point(485, 18);
-            this.rbtenkh.Name = "rbtenkh";
-            this.rbtenkh.Size = new System.Drawing.Size(68, 17);
-            this.rbtenkh.TabIndex = 10;
-            this.rbtenkh.Text = "Tên NV";
-            this.rbtenkh.UseVisualStyleBackColor = true;
+            this.rbtennv.AutoSize = true;
+            this.rbtennv.Location = new System.Drawing.Point(485, 18);
+            this.rbtennv.Name = "rbtennv";
+            this.rbtennv.Size = new System.Drawing.Size(68, 17);
+            this.rbtennv.TabIndex = 10;
+            this.rbtennv.Text = "Tên NV";
+            this.rbtennv.UseVisualStyleBackColor = true;
             // 
-            // rbmakh
+            // rbmanv
             // 
-            this.rbmakh.AutoSize = true;
-            this.rbmakh.Checked = true;
-            this.rbmakh.Location = new System.Drawing.Point(398, 18);
-            this.rbmakh.Name = "rbmakh";
-            this.rbmakh.Size = new System.Drawing.Size(63, 17);
-            this.rbmakh.TabIndex = 9;
-            this.rbmakh.TabStop = true;
-            this.rbmakh.Text = "Mã NV";
-            this.rbmakh.UseVisualStyleBackColor = true;
+            this.rbmanv.AutoSize = true;
+            this.rbmanv.Checked = true;
+            this.rbmanv.Location = new System.Drawing.Point(398, 18);
+            this.rbmanv.Name = "rbmanv";
+            this.rbmanv.Size = new System.Drawing.Size(63, 17);
+            this.rbmanv.TabIndex = 9;
+            this.rbmanv.TabStop = true;
+            this.rbmanv.Text = "Mã NV";
+            this.rbmanv.UseVisualStyleBackColor = true;
             // 
             // tbtimkiem
             // 
@@ -104,15 +103,7 @@
             this.tbtimkiem.Name = "tbtimkiem";
             this.tbtimkiem.Size = new System.Drawing.Size(272, 20);
             this.tbtimkiem.TabIndex = 8;
-            // 
-            // bttimkiem
-            // 
-            this.bttimkiem.Location = new System.Drawing.Point(6, 16);
-            this.bttimkiem.Name = "bttimkiem";
-            this.bttimkiem.Size = new System.Drawing.Size(75, 23);
-            this.bttimkiem.TabIndex = 11;
-            this.bttimkiem.Text = "Tìm Kiếm";
-            this.bttimkiem.UseVisualStyleBackColor = true;
+            this.tbtimkiem.TextChanged += new System.EventHandler(this.tbtimkiem_TextChanged);
             // 
             // nhanVienBindingSource
             // 
@@ -146,6 +137,7 @@
             this.btxoa.TabIndex = 19;
             this.btxoa.Text = "Xóa";
             this.btxoa.UseVisualStyleBackColor = true;
+            this.btxoa.Click += new System.EventHandler(this.btxoa_Click);
             // 
             // btsua
             // 
@@ -190,9 +182,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Nhân Viên";
             // 
+            // rbNu
+            // 
+            this.rbNu.AutoSize = true;
+            this.rbNu.Location = new System.Drawing.Point(179, 86);
+            this.rbNu.Name = "rbNu";
+            this.rbNu.Size = new System.Drawing.Size(41, 17);
+            this.rbNu.TabIndex = 8;
+            this.rbNu.TabStop = true;
+            this.rbNu.Text = "Nữ";
+            this.rbNu.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 88);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Giới Tính";
+            // 
+            // rbNam
+            // 
+            this.rbNam.AutoSize = true;
+            this.rbNam.Location = new System.Drawing.Point(94, 86);
+            this.rbNam.Name = "rbNam";
+            this.rbNam.Size = new System.Drawing.Size(50, 17);
+            this.rbNam.TabIndex = 8;
+            this.rbNam.TabStop = true;
+            this.rbNam.Text = "Nam";
+            this.rbNam.UseVisualStyleBackColor = true;
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(94, 173);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -218,6 +242,7 @@
             // 
             // tbtennv
             // 
+            this.tbtennv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbtennv.Location = new System.Drawing.Point(94, 56);
             this.tbtennv.Name = "tbtennv";
             this.tbtennv.Size = new System.Drawing.Size(400, 20);
@@ -225,6 +250,7 @@
             // 
             // tbdienthoai
             // 
+            this.tbdienthoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbdienthoai.Location = new System.Drawing.Point(94, 144);
             this.tbdienthoai.Name = "tbdienthoai";
             this.tbdienthoai.Size = new System.Drawing.Size(400, 20);
@@ -232,6 +258,7 @@
             // 
             // tbdiachinv
             // 
+            this.tbdiachinv.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbdiachinv.Location = new System.Drawing.Point(94, 115);
             this.tbdiachinv.Name = "tbdiachinv";
             this.tbdiachinv.Size = new System.Drawing.Size(400, 20);
@@ -294,36 +321,14 @@
             this.dgvNhanVien.TabIndex = 22;
             this.dgvNhanVien.SelectionChanged += new System.EventHandler(this.dgvNhanVien_SelectionChanged_1);
             // 
-            // rbNam
+            // label8
             // 
-            this.rbNam.AutoSize = true;
-            this.rbNam.Location = new System.Drawing.Point(94, 86);
-            this.rbNam.Name = "rbNam";
-            this.rbNam.Size = new System.Drawing.Size(50, 17);
-            this.rbNam.TabIndex = 8;
-            this.rbNam.TabStop = true;
-            this.rbNam.Text = "Nam";
-            this.rbNam.UseVisualStyleBackColor = true;
-            // 
-            // rbNu
-            // 
-            this.rbNu.AutoSize = true;
-            this.rbNu.Location = new System.Drawing.Point(179, 86);
-            this.rbNu.Name = "rbNu";
-            this.rbNu.Size = new System.Drawing.Size(41, 17);
-            this.rbNu.TabIndex = 8;
-            this.rbNu.TabStop = true;
-            this.rbNu.Text = "Nữ";
-            this.rbNu.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 88);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Giới Tính";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(18, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Tìm Kiếm";
             // 
             // formNhanVien
             // 
@@ -341,6 +346,7 @@
             this.Controls.Add(this.label1);
             this.Name = "formNhanVien";
             this.Text = "formNhanVien";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formNhanVien_FormClosing);
             this.Load += new System.EventHandler(this.formNhanVien_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -356,10 +362,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rbtenkh;
-        private System.Windows.Forms.RadioButton rbmakh;
+        private System.Windows.Forms.RadioButton rbtennv;
+        private System.Windows.Forms.RadioButton rbmanv;
         private System.Windows.Forms.TextBox tbtimkiem;
-        private System.Windows.Forms.Button bttimkiem;
         private System.Windows.Forms.Button btluu;
         private System.Windows.Forms.Button btthoat;
         private System.Windows.Forms.Button btxoa;
@@ -390,5 +395,6 @@
         private System.Windows.Forms.RadioButton rbNam;
         private System.Windows.Forms.RadioButton rbNu;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

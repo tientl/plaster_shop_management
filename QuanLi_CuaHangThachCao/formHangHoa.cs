@@ -33,6 +33,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void SetViewing()
         {
+            groupBox1.Enabled = true;
             tbmahang.Enabled = false;
             dgvhanghoa.Enabled = true;
             btLuu.Enabled = false;
@@ -57,7 +58,7 @@ namespace QuanLi_CuaHangThachCao
         {
             tbmahang.Clear();
             tbtenhang.Clear();
-            cbChatLieu.Text = "";
+            tbtenchatlieu.Text = "";
             tbsoluong.Clear();
             tbDonGiaBan.Clear();
             tbDonGiaNhap.Clear();
@@ -71,15 +72,7 @@ namespace QuanLi_CuaHangThachCao
         }
 
 
-        private void formHangHoa_Load(object sender, EventArgs e)
-        {
-            string sql = "SELECT * FROM ChatLieu ";
-            DataTable dt = condb.getDataTable(sql);
-            cbChatLieu.DataSource = dt;
-            cbChatLieu.ValueMember = "MaChatLieu";
-            cbChatLieu.DisplayMember = "TenChatLieu";
-            cbChatLieu.Show();
-        }
+        
         public void showData()
         {
             string sql = "SELECT * FROM Hang";
@@ -122,7 +115,7 @@ namespace QuanLi_CuaHangThachCao
                     VT = dgvhanghoa.CurrentCell.RowIndex; 
                     tbmahang.Text = dgvhanghoa.Rows[VT].Cells[0].Value.ToString();
                     tbtenhang.Text = dgvhanghoa.Rows[VT].Cells[1].Value.ToString();
-                    cbChatLieu.Text = dgvhanghoa.Rows[VT].Cells[2].Value.ToString();
+                    tbtenchatlieu.Text = dgvhanghoa.Rows[VT].Cells[2].Value.ToString();
                     tbsoluong.Text = dgvhanghoa.Rows[VT].Cells[3].Value.ToString();
                     tbDonGiaNhap.Text = dgvhanghoa.Rows[VT].Cells[4].Value.ToString();
                     tbDonGiaBan.Text = dgvhanghoa.Rows[VT].Cells[5].Value.ToString();
@@ -138,14 +131,15 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                if (tbmahang.Text != "" && tbtenhang.Text != "" && cbChatLieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
+                if (tbmahang.Text != "" && tbtenhang.Text != "" && tbtenchatlieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
                 {
 
-                    string sql = "INSERT INTO Hang VALUES(N'" + tbmahang.Text + "',N'" + tbtenhang.Text + "',N'" + cbChatLieu.SelectedValue + "',N'" + tbsoluong.Text + "',N'" + tbDonGiaNhap.Text + "',N'" + tbDonGiaBan.Text + "')";
+                    string sql = "INSERT INTO Hang VALUES(N'" + tbmahang.Text + "',N'" + tbtenhang.Text + "',N'" + tbtenchatlieu.Text + "',N'" + tbsoluong.Text + "',N'" + tbDonGiaNhap.Text + "',N'" + tbDonGiaBan.Text + "')";
                     condb.ExecuteNonQuery(sql);
                     MessageBox.Show("Thêm Thành Công!!");
                     showData();
                     SetViewing();
+                    groupBox1.Enabled = false;
                 }
                 else
                 {
@@ -163,13 +157,13 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                if (tbmahang.Text != "" && tbtenhang.Text != "" && cbChatLieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
+                if (tbmahang.Text != "" && tbtenhang.Text != "" && tbtenchatlieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
                 {
                     DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes)
                     {
                         
-                        string sql = "Update Hang Set MaHang =N'" + tbmahang.Text + "',TenHang =N'" + tbtenhang.Text + "',MaChatLieu=N'" + cbChatLieu.SelectedValue + "',SoLuong =N'" + tbsoluong.Text + "',DonGiaNhap =N'" + tbDonGiaNhap.Text + "',DonGiaBan =N'" + tbDonGiaBan.Text + "'Where MaHang ='" + tbmahang.Text + "'";
+                        string sql = "Update Hang Set MaHang =N'" + tbmahang.Text + "',TenHang =N'" + tbtenhang.Text + "',MaChatLieu=N'" + tbtenchatlieu.Text + "',SoLuong =N'" + tbsoluong.Text + "',DonGiaNhap =N'" + tbDonGiaNhap.Text + "',DonGiaBan =N'" + tbDonGiaBan.Text + "'Where MaHang ='" + tbmahang.Text + "'";
                         condb.ExecuteNonQuery(sql);
                         MessageBox.Show("Sửa Thành Công");
                         showData();
@@ -266,6 +260,15 @@ namespace QuanLi_CuaHangThachCao
             }
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void formHangHoa_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Main m = new Main();
+            m.Show();
+        }
     }
 }
