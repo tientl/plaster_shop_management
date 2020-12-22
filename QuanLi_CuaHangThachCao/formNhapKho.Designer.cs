@@ -198,7 +198,7 @@
             // nhapKhoBindingSource
             // 
             this.nhapKhoBindingSource.DataMember = "NhapKho";
-            this.nhapKhoBindingSource.DataSource = this.dbCuaHang_ThachCaoDataSet;
+            
             // 
             // dbCuaHang_ThachCaoDataSet
             // 

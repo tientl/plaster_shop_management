@@ -68,49 +68,45 @@ namespace QuanLi_CuaHangThachCao
 
             
         }
-        public void showData()
+        private void showData()
         {
-            try
+            string sql = "SELECT * FROM NhanVien";
+            DataTable dt = condb.getDataTable(sql);
+            dgvNhanVien.DataSource = dt;
+            dgvNhanVien.Show();
+            //Autosize table
+            for (int i = 0; i < dgvNhanVien.Columns.Count - 1; i++)
             {
-                string sql = "SELECT * FROM NhanVien";
-                DataTable dt = condb.getDataTable(sql);
-                dgvNhanVien.DataSource = dt;
-                dgvNhanVien.Show();
-                // Autosize table
-                for (int i = 0; i < dgvNhanVien.Columns.Count - 1; i++)
-                {
-                    dgvNhanVien.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                }
-                dgvNhanVien.Columns[dgvNhanVien.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvNhanVien.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
-            catch
-            {
-                
-            }    
-            
-            
-            
+            dgvNhanVien.Columns[dgvNhanVien.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btthem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SetEditing();
-                TrangThai = FState.IsEditing;
-                groupBox1.Enabled = true;
-                AutoUp();
-                dgvNhanVien.Enabled = false;
-            }
-            catch (Exception E)
-            {
-                MessageBox.Show(E.Message);
-            }
+
+            SetEditing();
+            TrangThai = FState.IsEditing;
+            groupBox1.Enabled = true;
+            AutoUp();
+            dgvNhanVien.Enabled = false;
+            tbtennv.Focus();
+            
         }
 
         private void AutoUp()
         {
-            throw new NotImplementedException();
+            Random ra = new Random();
+            int ra1 = ra.Next(1, 50);
+            int count = dgvNhanVien.Rows.Count;
+            if (count > 9)
+            {
+                tbmanv.Text = "NV" + count++ + "-" + ra1;
+            }
+            else
+            {
+                tbmanv.Text = "NV0" + count++ + "-" + ra1;
+            }
         }
 
         private void btluu_Click(object sender, EventArgs e)
@@ -159,7 +155,9 @@ namespace QuanLi_CuaHangThachCao
             }
         }
 
-        private void dgvNhanVien_SelectionChanged(object sender, EventArgs e)
+        
+
+        private void dgvNhanVien_SelectionChanged_1(object sender, EventArgs e)
         {
             try
             {
@@ -173,7 +171,7 @@ namespace QuanLi_CuaHangThachCao
                     rbNam.Text = dgvNhanVien.Rows[VT].Cells[2].Value.ToString();
                     tbdiachinv.Text = dgvNhanVien.Rows[VT].Cells[3].Value.ToString();
                     tbdienthoai.Text = dgvNhanVien.Rows[VT].Cells[4].Value.ToString();
-
+                    dateTimePicker1.Text = dgvNhanVien.Rows[VT].Cells[5].Value.ToString();
                 }
             }
             catch (Exception a)

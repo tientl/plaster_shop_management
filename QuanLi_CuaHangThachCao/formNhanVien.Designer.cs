@@ -34,7 +34,6 @@
             this.rbmakh = new System.Windows.Forms.RadioButton();
             this.tbtimkiem = new System.Windows.Forms.TextBox();
             this.bttimkiem = new System.Windows.Forms.Button();
-            this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btluu = new System.Windows.Forms.Button();
             this.btthoat = new System.Windows.Forms.Button();
@@ -42,6 +41,7 @@
             this.btsua = new System.Windows.Forms.Button();
             this.btthem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grSex = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.rbNam = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,12 +56,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.grSex = new System.Windows.Forms.GroupBox();
+            this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.grSex.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -115,17 +115,6 @@
             this.bttimkiem.TabIndex = 11;
             this.bttimkiem.Text = "Tìm Kiếm";
             this.bttimkiem.UseVisualStyleBackColor = true;
-            // 
-            // dgvNhanVien
-            // 
-            this.dgvNhanVien.AutoGenerateColumns = false;
-            this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNhanVien.DataSource = this.nhanVienBindingSource;
-            this.dgvNhanVien.Location = new System.Drawing.Point(43, 354);
-            this.dgvNhanVien.Name = "dgvNhanVien";
-            this.dgvNhanVien.Size = new System.Drawing.Size(647, 188);
-            this.dgvNhanVien.TabIndex = 22;
-            this.dgvNhanVien.SelectionChanged += new System.EventHandler(this.dgvNhanVien_SelectionChanged);
             // 
             // nhanVienBindingSource
             // 
@@ -201,6 +190,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Nhân Viên";
             // 
+            // grSex
+            // 
+            this.grSex.Controls.Add(this.radioButton2);
+            this.grSex.Controls.Add(this.rbNam);
+            this.grSex.Location = new System.Drawing.Point(94, 75);
+            this.grSex.Name = "grSex";
+            this.grSex.Size = new System.Drawing.Size(400, 28);
+            this.grSex.TabIndex = 9;
+            this.grSex.TabStop = false;
+            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
@@ -234,7 +233,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(94, 166);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -326,23 +325,23 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Nhân Viên";
             // 
-            // grSex
+            // dgvNhanVien
             // 
-            this.grSex.Controls.Add(this.radioButton2);
-            this.grSex.Controls.Add(this.rbNam);
-            this.grSex.Location = new System.Drawing.Point(94, 75);
-            this.grSex.Name = "grSex";
-            this.grSex.Size = new System.Drawing.Size(400, 28);
-            this.grSex.TabIndex = 9;
-            this.grSex.TabStop = false;
+            this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhanVien.Location = new System.Drawing.Point(43, 346);
+            this.dgvNhanVien.Name = "dgvNhanVien";
+            this.dgvNhanVien.ReadOnly = true;
+            this.dgvNhanVien.Size = new System.Drawing.Size(647, 190);
+            this.dgvNhanVien.TabIndex = 22;
+            this.dgvNhanVien.SelectionChanged += new System.EventHandler(this.dgvNhanVien_SelectionChanged_1);
             // 
             // formNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 557);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvNhanVien);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btluu);
             this.Controls.Add(this.btthoat);
             this.Controls.Add(this.btxoa);
@@ -355,12 +354,12 @@
             this.Load += new System.EventHandler(this.formNhanVien_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhanVienBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grSex.ResumeLayout(false);
             this.grSex.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,7 +372,6 @@
         private System.Windows.Forms.RadioButton rbmakh;
         private System.Windows.Forms.TextBox tbtimkiem;
         private System.Windows.Forms.Button bttimkiem;
-        private System.Windows.Forms.DataGridView dgvNhanVien;
         private System.Windows.Forms.Button btluu;
         private System.Windows.Forms.Button btthoat;
         private System.Windows.Forms.Button btxoa;
@@ -404,5 +402,6 @@
         private System.Windows.Forms.RadioButton rbNam;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox grSex;
+        private System.Windows.Forms.DataGridView dgvNhanVien;
     }
 }
