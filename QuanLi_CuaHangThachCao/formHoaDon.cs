@@ -55,5 +55,11 @@ namespace QuanLi_CuaHangThachCao
         {
 
         }
+
+        private void btthem_Click(object sender, EventArgs e)
+        {
+            dgvListSP.Rows.Add(cbxTenHang.Text, txtSoLuong.Text);
+            
+        }
     }
 }

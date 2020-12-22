@@ -28,43 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DateTimePicker dateTimePicker1;
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.btthoat = new System.Windows.Forms.Button();
             this.Reload = new System.Windows.Forms.Button();
             this.btxoa = new System.Windows.Forms.Button();
             this.thsua = new System.Windows.Forms.Button();
             this.btthem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dbCuaHangThachCaoDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hDBanBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.cbxTenHang = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.listSanPham = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
+            this.dgvListSP = new System.Windows.Forms.DataGridView();
+            this.tenhang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.dbCuaHangThachCaoDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hDBanBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListSP)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.CustomFormat = "dd/mm/yyyy";
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             dateTimePicker1.Location = new System.Drawing.Point(125, 77);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new System.Drawing.Size(178, 20);
             dateTimePicker1.TabIndex = 44;
-            dateTimePicker1.Value = new System.DateTime(2020, 12, 11, 0, 0, 0, 0);
+            dateTimePicker1.Value = new System.DateTime(2020, 12, 22, 0, 0, 0, 0);
             // 
             // btthoat
             // 
-            this.btthoat.Location = new System.Drawing.Point(707, 368);
+            this.btthoat.Location = new System.Drawing.Point(707, 310);
             this.btthoat.Name = "btthoat";
             this.btthoat.Size = new System.Drawing.Size(80, 28);
             this.btthoat.TabIndex = 38;
@@ -73,7 +68,7 @@
             // 
             // Reload
             // 
-            this.Reload.Location = new System.Drawing.Point(707, 416);
+            this.Reload.Location = new System.Drawing.Point(707, 358);
             this.Reload.Name = "Reload";
             this.Reload.Size = new System.Drawing.Size(80, 28);
             this.Reload.TabIndex = 32;
@@ -82,7 +77,7 @@
             // 
             // btxoa
             // 
-            this.btxoa.Location = new System.Drawing.Point(707, 318);
+            this.btxoa.Location = new System.Drawing.Point(707, 260);
             this.btxoa.Name = "btxoa";
             this.btxoa.Size = new System.Drawing.Size(80, 28);
             this.btxoa.TabIndex = 31;
@@ -91,7 +86,7 @@
             // 
             // thsua
             // 
-            this.thsua.Location = new System.Drawing.Point(707, 268);
+            this.thsua.Location = new System.Drawing.Point(707, 210);
             this.thsua.Name = "thsua";
             this.thsua.Size = new System.Drawing.Size(80, 28);
             this.thsua.TabIndex = 30;
@@ -106,6 +101,7 @@
             this.btthem.TabIndex = 29;
             this.btthem.Text = "Thêm";
             this.btthem.UseVisualStyleBackColor = true;
+            this.btthem.Click += new System.EventHandler(this.btthem_Click);
             // 
             // label1
             // 
@@ -118,16 +114,6 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Hóa Đơn";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // hDBanBindingSource
-            // 
-            this.hDBanBindingSource.DataMember = "HDBan";
-            this.hDBanBindingSource.DataSource = this.dbCuaHangThachCaoDataSetBindingSource;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // label3
             // 
@@ -165,18 +151,6 @@
             this.label2.Text = "Số Lượng";
             this.label2.Click += new System.EventHandler(this.label3_Click);
             // 
-            // listSanPham
-            // 
-            this.listSanPham.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.listSanPham.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listSanPham.Location = new System.Drawing.Point(50, 216);
-            this.listSanPham.Name = "listSanPham";
-            this.listSanPham.Size = new System.Drawing.Size(616, 285);
-            this.listSanPham.TabIndex = 43;
-            this.listSanPham.UseCompatibleStateImageBehavior = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -187,13 +161,36 @@
             this.label4.Text = "Ngày Mua";
             this.label4.Click += new System.EventHandler(this.label3_Click);
             // 
+            // dgvListSP
+            // 
+            this.dgvListSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListSP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tenhang,
+            this.soluong});
+            this.dgvListSP.Location = new System.Drawing.Point(50, 210);
+            this.dgvListSP.Name = "dgvListSP";
+            this.dgvListSP.Size = new System.Drawing.Size(616, 193);
+            this.dgvListSP.TabIndex = 45;
+            // 
+            // tenhang
+            // 
+            this.tenhang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tenhang.HeaderText = "Tên Hàng";
+            this.tenhang.Name = "tenhang";
+            // 
+            // soluong
+            // 
+            this.soluong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soluong.HeaderText = "Số Lượng";
+            this.soluong.Name = "soluong";
+            // 
             // formHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 567);
+            this.ClientSize = new System.Drawing.Size(824, 458);
+            this.Controls.Add(this.dgvListSP);
             this.Controls.Add(dateTimePicker1);
-            this.Controls.Add(this.listSanPham);
             this.Controls.Add(this.cbxTenHang);
             this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.label2);
@@ -208,8 +205,7 @@
             this.Name = "formHoaDon";
             this.Text = "formHoaDon";
             this.Load += new System.EventHandler(this.formHoaDon_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dbCuaHangThachCaoDataSetBindingSource)).EndInit();
-           
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListSP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,17 +218,13 @@
         private System.Windows.Forms.Button thsua;
         private System.Windows.Forms.Button btthem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource dbCuaHangThachCaoDataSetBindingSource;
-        
-        private System.Windows.Forms.BindingSource hDBanBindingSource;
-        
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.ComboBox cbxTenHang;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listSanPham;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.DataGridView dgvListSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenhang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soluong;
     }
 }
