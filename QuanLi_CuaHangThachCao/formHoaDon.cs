@@ -17,10 +17,11 @@ namespace QuanLi_CuaHangThachCao
         {
 
             InitializeComponent();
-            LoadCBox();
+            LoadCBoxHangHoa();
+            LoadCBoxMaKhach();
         }
 
-        private void LoadCBox()
+        private void LoadCBoxHangHoa()
         {
             condb.connect();
             string sql = "SELECT * FROM HANG ";
@@ -30,6 +31,20 @@ namespace QuanLi_CuaHangThachCao
             cbxTenHang.DisplayMember = "TenHang";
             cbxTenHang.Show();           
         }
+
+        private void LoadCBoxMaKhach()
+        {
+            condb.connect();
+            string sql = "SELECT * FROM Khach ";
+            DataTable dt = condb.getDataTable(sql);
+            cbTenKhach.DataSource = dt;
+            cbMaKhach.DataSource = dt;
+            cbTenKhach.ValueMember = "MaKhach";
+            cbTenKhach.DisplayMember = "TenKhach";          
+            cbMaKhach.DisplayMember = "MaKhach";
+            cbTenKhach.Show();
+            cbMaKhach.Show();
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -37,24 +52,11 @@ namespace QuanLi_CuaHangThachCao
 
         private void formHoaDon_Load(object sender, EventArgs e)
         {
-            LoadCBox();
+           // LoadCBoxHangHoa();
             
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbxTenHang_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btthem_Click(object sender, EventArgs e)
         {
@@ -68,5 +70,7 @@ namespace QuanLi_CuaHangThachCao
             fK.Show();
             
         }
+
+        
     }
 }
