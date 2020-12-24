@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnChatLieu = new System.Windows.Forms.Button();
             this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.btnKho = new System.Windows.Forms.Button();
             this.btnGhiNo = new System.Windows.Forms.Button();
@@ -50,7 +49,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnChatLieu);
             this.groupBox1.Controls.Add(this.btnTaiKhoan);
             this.groupBox1.Controls.Add(this.btnKho);
             this.groupBox1.Controls.Add(this.btnGhiNo);
@@ -61,13 +59,6 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // btnChatLieu
-            // 
-            resources.ApplyResources(this.btnChatLieu, "btnChatLieu");
-            this.btnChatLieu.Name = "btnChatLieu";
-            this.btnChatLieu.UseVisualStyleBackColor = true;
-            this.btnChatLieu.Click += new System.EventHandler(this.btnChatLieu_Click);
             // 
             // btnTaiKhoan
             // 
@@ -137,7 +128,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnChatLieu;
         private System.Windows.Forms.Button btnTaiKhoan;
         private System.Windows.Forms.Button btnKho;
         private System.Windows.Forms.Button btnGhiNo;

@@ -20,7 +20,7 @@ namespace QuanLi_CuaHangThachCao
         private void formGhiNo_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dbCuaHang_ThachCaoDataSet.GhiNo' table. You can move, or remove it, as needed.
-            this.ghiNoTableAdapter.Fill(this.dbCuaHang_ThachCaoDataSet.GhiNo);
+            
 
         }
 
