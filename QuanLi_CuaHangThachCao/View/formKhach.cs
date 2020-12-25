@@ -255,6 +255,8 @@ namespace QuanLi_CuaHangThachCao
 
         private void button1_Click(object sender, EventArgs e)
         {
+            formHoaDon fHD = new formHoaDon();
+            fHD.Show();
             this.Close();
             
         }

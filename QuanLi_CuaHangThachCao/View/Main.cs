@@ -66,7 +66,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Show();
+            //this.Show();
         }
 
         private void btnHoaDon_Click(object sender, EventArgs e)

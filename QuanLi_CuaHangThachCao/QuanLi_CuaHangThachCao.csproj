@@ -52,71 +52,71 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbCuaHang_ThachCaoDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="formGhiNo.cs">
+    <Compile Include="View\formGhiNo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formGhiNo.Designer.cs">
+    <Compile Include="View\formGhiNo.Designer.cs">
       <DependentUpon>formGhiNo.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHangHoa.cs">
+    <Compile Include="View\formHangHoa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHangHoa.Designer.cs">
+    <Compile Include="View\formHangHoa.Designer.cs">
       <DependentUpon>formHangHoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="formHoaDon.cs">
+    <Compile Include="View\formHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formHoaDon.Designer.cs">
+    <Compile Include="View\formHoaDon.Designer.cs">
       <DependentUpon>formHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="formKhach.cs">
+    <Compile Include="View\formKhach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formKhach.Designer.cs">
+    <Compile Include="View\formKhach.Designer.cs">
       <DependentUpon>formKhach.cs</DependentUpon>
     </Compile>
-    <Compile Include="formNhanVien.cs">
+    <Compile Include="View\formNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formNhanVien.Designer.cs">
+    <Compile Include="View\formNhanVien.Designer.cs">
       <DependentUpon>formNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="formNhapKho.cs">
+    <Compile Include="View\formNhapKho.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formNhapKho.Designer.cs">
+    <Compile Include="View\formNhapKho.Designer.cs">
       <DependentUpon>formNhapKho.cs</DependentUpon>
     </Compile>
     <Compile Include="HangHoa.cs" />
     <Compile Include="Khach.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="View\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="formGhiNo.resx">
+    <EmbeddedResource Include="View\formGhiNo.resx">
       <DependentUpon>formGhiNo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHangHoa.resx">
+    <EmbeddedResource Include="View\formHangHoa.resx">
       <DependentUpon>formHangHoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formHoaDon.resx">
+    <EmbeddedResource Include="View\formHoaDon.resx">
       <DependentUpon>formHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formKhach.resx">
+    <EmbeddedResource Include="View\formKhach.resx">
       <DependentUpon>formKhach.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formNhanVien.resx">
+    <EmbeddedResource Include="View\formNhanVien.resx">
       <DependentUpon>formNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formNhapKho.resx">
+    <EmbeddedResource Include="View\formNhapKho.resx">
       <DependentUpon>formNhapKho.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="View\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
