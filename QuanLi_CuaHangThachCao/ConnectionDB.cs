@@ -10,7 +10,7 @@ namespace QuanLi_CuaHangThachCao
 {
     class ConnectionDB
     {
-        public static string conString = @"Data Source=TRANTIEN\SQLEXPRESS;Initial Catalog=dbCuaHang_ThachCao;Integrated Security=True";
+        public static string conString = @"Data Source=DESKTOP-1A6GVM6;Initial Catalog=QL_sThachCao;Integrated Security=True";
         public SqlConnection con;
         public DataTable dt;
         public SqlCommand command;

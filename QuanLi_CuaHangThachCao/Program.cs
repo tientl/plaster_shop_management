@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLi_CuaHangThachCao.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace QuanLi_CuaHangThachCao
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new FormLogin());
         }
     }
 }

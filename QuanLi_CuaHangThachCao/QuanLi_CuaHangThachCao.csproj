@@ -76,6 +76,12 @@
     <Compile Include="View\formKhach.Designer.cs">
       <DependentUpon>formKhach.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\formNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\formKhach.resx">
       <DependentUpon>formKhach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\formNhanVien.resx">
       <DependentUpon>formNhanVien.cs</DependentUpon>
