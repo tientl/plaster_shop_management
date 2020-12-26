@@ -13,6 +13,7 @@ namespace QuanLi_CuaHangThachCao.View
 {
     public partial class FormLogin : Form
     {
+        public static bool isAdmin = false;
         private string username;
         private string password;
         public FormLogin()
@@ -41,6 +42,8 @@ namespace QuanLi_CuaHangThachCao.View
                     MessageBox.Show("Sai tai khoan hoac mat khau");
                 else
                 {
+                    string role = dtUser.Rows[0]["role"].ToString().Trim();
+                    if (role.CompareTo("ADMIN") == 0) isAdmin = true;
                     new Main().Show();
                     this.Hide();
                 }

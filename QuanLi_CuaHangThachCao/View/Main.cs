@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLi_CuaHangThachCao.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            if (FormLogin.isAdmin) MessageBox.Show("Admin"); else MessageBox.Show("User");
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
