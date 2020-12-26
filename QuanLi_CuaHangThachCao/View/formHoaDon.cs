@@ -31,24 +31,29 @@ namespace QuanLi_CuaHangThachCao
 
         private void SetViewing()
         {
-            
+            tbMaHD.Enabled = false;
+            dgvHoaDon.Enabled = true;
+            btLuu.Enabled = false;
+            btthem.Enabled = true;
+            btsua.Enabled = true;
+            btXoa.Enabled = true;
+            btLuu.Enabled = false;
+            btthoat.Text = "Thoát";
         }
         private void SetEditing()
         {
-            //ResetTextBox();
-            //tbmakh.Enabled = true;
-            //btxoa.Enabled = false;
-            //btsua.Enabled = false;
-            //btthem.Enabled = false;
-            //btnLuu.Enabled = true;
-            //btthoat.Text = "Hủy";
+            ResetTextBox();
+            btthem.Enabled = false;
+            btXoa.Enabled = false;
+            btsua.Enabled = false;           
+            btLuu.Enabled = true;
+            btthoat.Text = "Hủy";
         }
         private void ResetTextBox()//Reset trắng nội dung các TextBox, gán dữ liệu ban đầu cho RadioButton, DateTimPickup
         {
-            //tbmakh.Clear();
-            //tbtenkh.Clear();
-            //tbdiachi.Clear();
-            //tbdienthoai.Clear();
+            cbTenKhach.Text = "";
+            cbMaKhach.Text = "";
+            tbMaNV.Clear();           
 
         }
         public formHoaDon()
@@ -57,6 +62,7 @@ namespace QuanLi_CuaHangThachCao
             InitializeComponent();
             LoadCBoxHangHoa();
             LoadCBoxMaKhach();
+            showData();
         }
 
         private void LoadCBoxHangHoa()
@@ -77,9 +83,11 @@ namespace QuanLi_CuaHangThachCao
             DataTable dt = condb.getDataTable(sql);
             cbTenKhach.DataSource = dt;
             cbMaKhach.DataSource = dt;
-            cbTenKhach.ValueMember = "MaKhach";
-            cbTenKhach.DisplayMember = "TenKhach";          
+            //cbMaKhach.ValueMember = "MaKhach";
             cbMaKhach.DisplayMember = "MaKhach";
+            cbMaKhach.ValueMember = "MaKhach";
+            cbTenKhach.ValueMember = "TenKhach";
+            cbTenKhach.DisplayMember = "TenKhach";
             cbTenKhach.Show();
             cbMaKhach.Show();
         }
@@ -102,9 +110,10 @@ namespace QuanLi_CuaHangThachCao
             {
                 SetEditing();
                 TrangThai = FState.IsEditing;
-                groupBox1.Enabled = true;
+                //groupBox1.Enabled = true;
                 AutoUp();
                 dgvHoaDon.Enabled = false;
+                cbTenKhach.Focus();
             }
             catch (Exception E)
             {
@@ -134,10 +143,7 @@ namespace QuanLi_CuaHangThachCao
             
         }
 
-        private void Reload_Click_1(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -145,5 +151,87 @@ namespace QuanLi_CuaHangThachCao
             f2.Show();
             this.Hide();
         }
+
+        public void showData()
+        {
+            string sql = "SELECT * FROM HDBan";
+            DataTable dt = condb.getDataTable(sql);
+            dgvHoaDon.DataSource = dt;
+            dgvHoaDon.Show();
+            // Autosize table
+            for (int i = 0; i < dgvHoaDon.Columns.Count - 1; i++)
+            {
+                dgvHoaDon.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dgvHoaDon.Columns[dgvHoaDon.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void btLuu_Click(object sender, EventArgs e)
+        {
+            if (tbMaHD.Text != "" && cbMaKhach.Text != "" && cbTenKhach.Text != "" && tbMaNV.Text != "")
+            {
+
+                string sql = "INSERT INTO HDBan VALUES(N'" + tbMaHD.Text + "','" + cbMaKhach.Text + "',N'" + cbTenKhach.Text + "',N'" + tbMaNV.Text + "',CONVERT(DATE,'" + date.Value + "',103))";
+                condb.ExecuteNonQuery(sql);
+                MessageBox.Show("Thêm Thành Công!!");
+                showData();
+                ResetTextBox();
+                SetViewing();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập thông tin !!");
+            }
+        }
+
+        private void dgvHoaDon_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                groupBox1.Enabled = true; // Groupbox thông tin KH mở
+                int VT = 0;
+                if (VT != null && VT >= 0)
+                {
+                    VT = dgvHoaDon.CurrentCell.RowIndex;
+                    tbMaHD.Text = dgvHoaDon.Rows[VT].Cells[0].Value.ToString();
+                    cbMaKhach.Text = dgvHoaDon.Rows[VT].Cells[1].Value.ToString();
+                    cbTenKhach.Text = dgvHoaDon.Rows[VT].Cells[2].Value.ToString();
+                    tbMaNV.Text = dgvHoaDon.Rows[VT].Cells[3].Value.ToString();
+                    date.Text = dgvHoaDon.Rows[VT].Cells[4].Value.ToString();
+                }
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show(a.Message);
+            }
+        }
+
+        private void btsua_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbMaNV.Text != "" && cbTenKhach.Text != "" && cbMaKhach.Text != "" && tbMaNV.Text != "")
+                {
+                    DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        condb.connect();
+                        string sql = "Update HDBan Set MaHDBan =N'" + tbMaHD.Text + "', MaKhach =N'" + cbMaKhach.Text + "',TenKhach =N'" + cbTenKhach.Text + "',MaNhanVien = N'" + tbMaNV.Text + "',NgayBan = CONVERT(DATE,'" + date.Value + "',103) Where MaHDBan ='" + tbMaHD.Text + "'";
+                        condb.ExecuteNonQuery(sql);
+                        MessageBox.Show("Sửa Thành Công");
+                        showData();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Hãy nhập thông tin cần SỬA !!");
+                }
+        }
+            catch
+            {
+                MessageBox.Show("Lỗi Dữ Liệu !!!");
+            }
+}
     }
 }

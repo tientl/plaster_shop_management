@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DateTimePicker dateTimePicker1;
             this.btthem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,30 +46,20 @@
             this.tbTongtien = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.date = new System.Windows.Forms.DateTimePicker();
+            this.cbMaKhach = new System.Windows.Forms.ComboBox();
             this.cbTenKhach = new System.Windows.Forms.ComboBox();
             this.btthoat = new System.Windows.Forms.Button();
-            this.thsua = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbMaKhach = new System.Windows.Forms.ComboBox();
-            this.btXoa = new System.Windows.Forms.Button();
             this.btLuu = new System.Windows.Forms.Button();
+            this.btXoa = new System.Windows.Forms.Button();
+            this.btsua = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHoaDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListSP)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new System.Drawing.Point(99, 150);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(411, 20);
-            dateTimePicker1.TabIndex = 44;
-            dateTimePicker1.Value = new System.DateTime(2020, 12, 22, 0, 0, 0, 0);
             // 
             // btthem
             // 
@@ -139,10 +128,11 @@
             // dgvHoaDon
             // 
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHoaDon.Location = new System.Drawing.Point(0, 236);
+            this.dgvHoaDon.Location = new System.Drawing.Point(0, 287);
             this.dgvHoaDon.Name = "dgvHoaDon";
             this.dgvHoaDon.Size = new System.Drawing.Size(550, 193);
             this.dgvHoaDon.TabIndex = 45;
+            this.dgvHoaDon.SelectionChanged += new System.EventHandler(this.dgvHoaDon_SelectionChanged);
             // 
             // laba
             // 
@@ -172,7 +162,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 74);
+            this.label6.Location = new System.Drawing.Point(22, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 46;
@@ -227,12 +217,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.date);
             this.groupBox2.Controls.Add(this.cbMaKhach);
             this.groupBox2.Controls.Add(this.cbTenKhach);
             this.groupBox2.Controls.Add(this.btthoat);
             this.groupBox2.Controls.Add(this.btLuu);
             this.groupBox2.Controls.Add(this.btXoa);
-            this.groupBox2.Controls.Add(this.thsua);
+            this.groupBox2.Controls.Add(this.btsua);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btthem);
             this.groupBox2.Controls.Add(this.label6);
@@ -242,18 +233,35 @@
             this.groupBox2.Controls.Add(this.tbMaHD);
             this.groupBox2.Controls.Add(this.dgvHoaDon);
             this.groupBox2.Controls.Add(this.tbMaNV);
-            this.groupBox2.Controls.Add(dateTimePicker1);
             this.groupBox2.Location = new System.Drawing.Point(12, 57);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(570, 401);
+            this.groupBox2.Size = new System.Drawing.Size(570, 493);
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hóa Đơn";
             // 
+            // date
+            // 
+            this.date.CustomFormat = "dd/MM/yyyy";
+            this.date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.date.Location = new System.Drawing.Point(99, 155);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(411, 20);
+            this.date.TabIndex = 51;
+            this.date.Value = new System.DateTime(2020, 12, 25, 0, 0, 0, 0);
+            // 
+            // cbMaKhach
+            // 
+            this.cbMaKhach.FormattingEnabled = true;
+            this.cbMaKhach.Location = new System.Drawing.Point(99, 66);
+            this.cbMaKhach.Name = "cbMaKhach";
+            this.cbMaKhach.Size = new System.Drawing.Size(411, 21);
+            this.cbMaKhach.TabIndex = 50;
+            // 
             // cbTenKhach
             // 
             this.cbTenKhach.FormattingEnabled = true;
-            this.cbTenKhach.Location = new System.Drawing.Point(99, 68);
+            this.cbTenKhach.Location = new System.Drawing.Point(99, 94);
             this.cbTenKhach.Name = "cbTenKhach";
             this.cbTenKhach.Size = new System.Drawing.Size(411, 21);
             this.cbTenKhach.TabIndex = 50;
@@ -267,31 +275,15 @@
             this.btthoat.Text = "Thoát";
             this.btthoat.UseVisualStyleBackColor = true;
             // 
-            // thsua
+            // btLuu
             // 
-            this.thsua.Location = new System.Drawing.Point(134, 196);
-            this.thsua.Name = "thsua";
-            this.thsua.Size = new System.Drawing.Size(80, 28);
-            this.thsua.TabIndex = 47;
-            this.thsua.Text = "Sửa";
-            this.thsua.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 101);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 13);
-            this.label8.TabIndex = 46;
-            this.label8.Text = "Mã Khách";
-            // 
-            // cbMaKhach
-            // 
-            this.cbMaKhach.FormattingEnabled = true;
-            this.cbMaKhach.Location = new System.Drawing.Point(99, 95);
-            this.cbMaKhach.Name = "cbMaKhach";
-            this.cbMaKhach.Size = new System.Drawing.Size(411, 21);
-            this.cbMaKhach.TabIndex = 50;
+            this.btLuu.Location = new System.Drawing.Point(340, 196);
+            this.btLuu.Name = "btLuu";
+            this.btLuu.Size = new System.Drawing.Size(80, 28);
+            this.btLuu.TabIndex = 48;
+            this.btLuu.Text = "Lưu";
+            this.btLuu.UseVisualStyleBackColor = true;
+            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
             // 
             // btXoa
             // 
@@ -302,19 +294,28 @@
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
             // 
-            // btLuu
+            // btsua
             // 
-            this.btLuu.Location = new System.Drawing.Point(340, 196);
-            this.btLuu.Name = "btLuu";
-            this.btLuu.Size = new System.Drawing.Size(80, 28);
-            this.btLuu.TabIndex = 48;
-            this.btLuu.Text = "Lưu";
-            this.btLuu.UseVisualStyleBackColor = true;
-            this.btLuu.Click += new System.EventHandler(this.Reload_Click_1);
+            this.btsua.Location = new System.Drawing.Point(134, 196);
+            this.btsua.Name = "btsua";
+            this.btsua.Size = new System.Drawing.Size(80, 28);
+            this.btsua.TabIndex = 47;
+            this.btsua.Text = "Sửa";
+            this.btsua.UseVisualStyleBackColor = true;
+            this.btsua.Click += new System.EventHandler(this.btsua_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 46;
+            this.label8.Text = "Mã Khách";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(219, 530);
+            this.button1.Location = new System.Drawing.Point(75, 565);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 50;
@@ -363,7 +364,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btthoat;
-        private System.Windows.Forms.Button thsua;
+        private System.Windows.Forms.Button btsua;
         private System.Windows.Forms.TextBox tbTongtien;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbTenKhach;
@@ -372,5 +373,6 @@
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Button btLuu;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker date;
     }
 }
