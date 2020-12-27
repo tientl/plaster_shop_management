@@ -35,7 +35,7 @@ namespace QuanLi_CuaHangThachCao.View
             else
             {
                 // sql injection - ' or '1' = '1
-                string query = "SELECT * FROM TAIKHOAN WHERE UserName = '" + username + "' AND Password = '" + password + "';";
+                string query = "SELECT * FROM TaiKhoan WHERE UserName = '" + username + "' AND Password = '" + password + "';";
                 DataTable dtUser = new ConnectionDB().getDataTable(query);
                 if (dtUser.Rows.Count != 1) 
                     MessageBox.Show("Sai tai khoan hoac mat khau");

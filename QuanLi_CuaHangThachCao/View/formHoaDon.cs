@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -57,12 +58,13 @@ namespace QuanLi_CuaHangThachCao
 
         }
         public formHoaDon()
-        {
-
+        {            
             InitializeComponent();
+            TrangThai = FState.IsViewing;
             LoadCBoxHangHoa();
             LoadCBoxMaKhach();
             showData();
+            showDataCTHD();
         }
 
         private void LoadCBoxHangHoa()
@@ -70,7 +72,7 @@ namespace QuanLi_CuaHangThachCao
             condb.connect();
             string sql = "SELECT * FROM HANG ";
             DataTable dt = condb.getDataTable(sql);
-            cbxTenHang.DataSource = dt;
+            cbxTenHang.DataSource = dt;              
             cbxTenHang.ValueMember = "MaHang";
             cbxTenHang.DisplayMember = "TenHang";
             cbxTenHang.Show();           
@@ -83,26 +85,11 @@ namespace QuanLi_CuaHangThachCao
             DataTable dt = condb.getDataTable(sql);
             cbTenKhach.DataSource = dt;
             cbMaKhach.DataSource = dt;
-            //cbMaKhach.ValueMember = "MaKhach";
             cbMaKhach.DisplayMember = "MaKhach";
-            cbMaKhach.ValueMember = "MaKhach";
-            cbTenKhach.ValueMember = "TenKhach";
             cbTenKhach.DisplayMember = "TenKhach";
             cbTenKhach.Show();
             cbMaKhach.Show();
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void formHoaDon_Load(object sender, EventArgs e)
-        {
-           // LoadCBoxHangHoa();
-            
-        }
-
-        
 
         private void btthem_Click(object sender, EventArgs e)
         {
@@ -136,21 +123,21 @@ namespace QuanLi_CuaHangThachCao
             }
 
         }
-        private void Reload_Click(object sender, EventArgs e)
+        public void showDataCTHD()
         {
-            formKhach fK = new formKhach();
-            fK.Show();
-            
+            string sql = "SELECT ct.MaHDBan,ct.TenHang,ct.SoLuong,h.DonGiaBan,ct.TongTien FROM ChiTietHD ct,Hang h WHERE ct.MaHang = h.MaHang AND ct.MaHDBan = '"+tbMaHD.Text+"'";
+           // string sql = "SELECT * FROM HDBan h,ChiTietHD ct WHERE ct.MaHDBan = h.MaHDBan";
+            DataTable dt = condb.getDataTable(sql);
+            dgvListSP.DataSource = dt;
+            dgvListSP.Show();
+            // Autosize table
+            for (int i = 0; i < dgvListSP.Columns.Count - 1; i++)
+            {
+                dgvListSP.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dgvListSP.Columns[dgvListSP.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            formKhach f2 = new formKhach();
-            f2.Show();
-            this.Hide();
-        }
 
         public void showData()
         {
@@ -189,7 +176,7 @@ namespace QuanLi_CuaHangThachCao
             try
             {
                 groupBox1.Enabled = true; // Groupbox thông tin KH mở
-                int VT = 0;
+                int VT=0;
                 if (VT != null && VT >= 0)
                 {
                     VT = dgvHoaDon.CurrentCell.RowIndex;
@@ -198,6 +185,7 @@ namespace QuanLi_CuaHangThachCao
                     cbTenKhach.Text = dgvHoaDon.Rows[VT].Cells[2].Value.ToString();
                     tbMaNV.Text = dgvHoaDon.Rows[VT].Cells[3].Value.ToString();
                     date.Text = dgvHoaDon.Rows[VT].Cells[4].Value.ToString();
+                    showDataCTHD(); 
                 }
             }
             catch (Exception a)
@@ -208,6 +196,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void btsua_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 if (tbMaNV.Text != "" && cbTenKhach.Text != "" && cbMaKhach.Text != "" && tbMaNV.Text != "")
@@ -227,11 +216,87 @@ namespace QuanLi_CuaHangThachCao
                 {
                     MessageBox.Show("Hãy nhập thông tin cần SỬA !!");
                 }
-        }
-            catch
-            {
-                MessageBox.Show("Lỗi Dữ Liệu !!!");
             }
-}
+                catch
+                {
+                    MessageBox.Show("Lỗi Dữ Liệu !!!");
+                }
+        }
+
+        private void btThemKhach_Click(object sender, EventArgs e)
+        {
+            formKhach fK = new formKhach();
+            fK.Show();
+            
+            this.Hide();
+        }
+
+        private void btnThemSp_Click(object sender, EventArgs e)
+        {
+            float DHB, Tong;
+            int SL;
+            DHB = float.Parse(txtDonGiaBan.Text);
+            SL = int.Parse(txtSoLuong.Text);
+            Tong = DHB * SL;
+            if (txtSoLuong.Text !="")
+            {
+                
+                string sql = "INSERT INTO ChiTietHD VALUES(N'" + tbMaHD.Text + "','" + cbxTenHang.SelectedValue.ToString() + "',N'" + cbxTenHang.Text + "',N'" + txtSoLuong.Text + "',N'" +Tong+ "')";
+                condb.ExecuteNonQuery(sql);
+                MessageBox.Show("Thêm Thành Công!!");
+                showDataCTHD();
+                ResetTextBox();
+                SetViewing();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập thông tin !!");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(cbxTenHang.SelectedValue.ToString());
+            
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            condb.connect();
+            string sql = "";
+            if (rbMaHD.Checked)
+            {
+                sql = "SELECT * FROM HDBan Where MaHDBan Like N'%" + tbtimkiem.Text + "%'";
+                condb.ExcuteQuery(sql);
+            }
+            if (rbTenKhach.Checked)
+            {
+                sql = "SELECT * FROM HDBan Where TenKhach Like N'%" + tbtimkiem.Text + "%'";
+                condb.ExcuteQuery(sql);
+            }
+            DataTable dt = condb.getDataTable(sql);
+            dgvHoaDon.DataSource = dt;
+            dgvHoaDon.Show();
+            
+        }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+                //string sql = "SELECT ct.MaHDBan,ct.MaHang,ct.TenHang,ct.SoLuong,ct.TongTien FROM ChiTietHD ct WHERE ct.MaHDBan = '"+tbMaHD.Text+"'";
+                //condb.ExcuteQuery(sql);
+                //DataTable dt = condb.getDataTable(sql);
+                //dgvListSP.DataSource = dt;
+                //dgvListSP.Show();
+            
+            
+        }
+
+        
     }
 }

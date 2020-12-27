@@ -107,6 +107,7 @@ namespace QuanLi_CuaHangThachCao
                 MessageBox.Show("Thêm Thành Công!!");
                 showData();
                 ResetTextBox();
+                TrangThai = FState.IsViewing;
                 SetViewing();
             }
             else
@@ -173,6 +174,7 @@ namespace QuanLi_CuaHangThachCao
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?", "Thông báo", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)              
                 this.Close();
+                
             }
             else
             {
@@ -244,21 +246,25 @@ namespace QuanLi_CuaHangThachCao
             int count = dgvkhachhang.Rows.Count;
             if (count > 9)
             {
-                tbmakh.Text = "H" + count++ + "-" + ra1;
+                tbmakh.Text = "KH" + count++ + "-" + ra1;
             }
             else
             {
-                tbmakh.Text = "H0" + count++ + "-" + ra1;
+                tbmakh.Text = "KH0" + count++ + "-" + ra1;
             }
 
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             formHoaDon fHD = new formHoaDon();
+            Main m = new Main();
+            m.Hide();
             fHD.Show();
             this.Close();
             
         }
+
+        
     }
 }
