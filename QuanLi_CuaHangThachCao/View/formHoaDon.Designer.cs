@@ -447,7 +447,7 @@
             this.rbTenKhach.TabIndex = 2;
             this.rbTenKhach.Text = "Tên Khách";
             this.rbTenKhach.UseVisualStyleBackColor = true;
-            this.rbTenKhach.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            
             // 
             // rbMaHD
             // 
@@ -460,7 +460,7 @@
             this.rbMaHD.TabStop = true;
             this.rbMaHD.Text = "Mã HD";
             this.rbMaHD.UseVisualStyleBackColor = true;
-            this.rbMaHD.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            
             // 
             // tbtimkiem
             // 

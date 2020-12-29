@@ -157,13 +157,15 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                if (tbmahang.Text != "" && tbtenhang.Text != "" && tbtenchatlieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
+
+            
+               if (tbmahang.Text != "" && tbtenhang.Text != "" && tbtenchatlieu.Text != "" && tbsoluong.Text != "" && tbDonGiaNhap.Text != "" && tbDonGiaBan.Text != "")
                 {
                     DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
                     if(result == DialogResult.Yes)
                     {
                         
-                        string sql = "Update Hang Set MaHang =N'" + tbmahang.Text + "',TenHang =N'" + tbtenhang.Text + "',MaChatLieu=N'" + tbtenchatlieu.Text + "',SoLuong =N'" + tbsoluong.Text + "',DonGiaNhap =N'" + tbDonGiaNhap.Text + "',DonGiaBan =N'" + tbDonGiaBan.Text + "'Where MaHang ='" + tbmahang.Text + "'";
+                        string sql = "Update Hang Set MaHang =N'" + tbmahang.Text + "',TenHang =N'" + tbtenhang.Text + "',TenChatLieu=N'" + tbtenchatlieu.Text + "',SoLuong =N'" + tbsoluong.Text + "',DonGiaNhap =N'" + tbDonGiaNhap.Text + "',DonGiaBan =N'" + tbDonGiaBan.Text + "'Where MaHang ='" + tbmahang.Text + "'";
                         condb.ExecuteNonQuery(sql);
                         MessageBox.Show("Sửa Thành Công");
                         showData();
@@ -177,8 +179,10 @@ namespace QuanLi_CuaHangThachCao
             }
             catch
             {
-                MessageBox.Show("Lỗi Dữ Liệu!!");
+                MessageBox.Show("Lỗi Dữ liệu!!");
             }
+
+
         }
 
         private void btthoat_Click(object sender, EventArgs e)
@@ -188,6 +192,7 @@ namespace QuanLi_CuaHangThachCao
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?", "Thông báo", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                     this.Close();
+                
             }
             else
             {

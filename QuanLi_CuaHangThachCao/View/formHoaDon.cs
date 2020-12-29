@@ -39,12 +39,7 @@ namespace QuanLi_CuaHangThachCao
             btsua.Enabled = true;
             btXoa.Enabled = true;
             btLuu.Enabled = false;          
-            //btnThemSp.Enabled = false;
-            //btnSuaSP.Enabled = false;
-            //btnXoaSp.Enabled = false;
-            //txtDonGiaBan.Enabled = false;
-            //txtSoLuong.Enabled = false;
-            //cbxTenHang.Enabled = false;
+           
             btthoat.Text = "Thoát";
         }
         private void SetEditing()
@@ -246,8 +241,7 @@ namespace QuanLi_CuaHangThachCao
         private void btThemKhach_Click(object sender, EventArgs e)
         {
             formKhach fK = new formKhach();
-            fK.Show();
-            
+            fK.Show();           
             this.Hide();
         }
 
@@ -280,17 +274,7 @@ namespace QuanLi_CuaHangThachCao
             }
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(cbxTenHang.SelectedValue.ToString());
-            
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+             
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

@@ -35,16 +35,7 @@
             this.tbtimkiem = new System.Windows.Forms.TextBox();
             this.bttimkiem = new System.Windows.Forms.Button();
             this.dgvKho = new System.Windows.Forms.DataGridView();
-            this.maHangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenHangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maChatLieuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soLuongDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.donGiaNhapDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diaChiNhapDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tongTienDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngayNhapDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nhapKhoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-
             this.bthuy = new System.Windows.Forms.Button();
             this.btthoat = new System.Windows.Forms.Button();
             this.btxoa = new System.Windows.Forms.Button();
@@ -68,11 +59,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-           
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhapKhoBindingSource)).BeginInit();
-            
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,78 +121,15 @@
             // 
             this.dgvKho.AutoGenerateColumns = false;
             this.dgvKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.maHangDataGridViewTextBoxColumn,
-            this.tenHangDataGridViewTextBoxColumn,
-            this.maChatLieuDataGridViewTextBoxColumn,
-            this.soLuongDataGridViewTextBoxColumn,
-            this.donGiaNhapDataGridViewTextBoxColumn,
-            this.diaChiNhapDataGridViewTextBoxColumn,
-            this.tongTienDataGridViewTextBoxColumn,
-            this.ngayNhapDataGridViewTextBoxColumn});
             this.dgvKho.DataSource = this.nhapKhoBindingSource;
             this.dgvKho.Location = new System.Drawing.Point(-3, 373);
             this.dgvKho.Name = "dgvKho";
             this.dgvKho.Size = new System.Drawing.Size(844, 167);
             this.dgvKho.TabIndex = 40;
             // 
-            // maHangDataGridViewTextBoxColumn
-            // 
-            this.maHangDataGridViewTextBoxColumn.DataPropertyName = "MaHang";
-            this.maHangDataGridViewTextBoxColumn.HeaderText = "MaHang";
-            this.maHangDataGridViewTextBoxColumn.Name = "maHangDataGridViewTextBoxColumn";
-            // 
-            // tenHangDataGridViewTextBoxColumn
-            // 
-            this.tenHangDataGridViewTextBoxColumn.DataPropertyName = "TenHang";
-            this.tenHangDataGridViewTextBoxColumn.HeaderText = "TenHang";
-            this.tenHangDataGridViewTextBoxColumn.Name = "tenHangDataGridViewTextBoxColumn";
-            // 
-            // maChatLieuDataGridViewTextBoxColumn
-            // 
-            this.maChatLieuDataGridViewTextBoxColumn.DataPropertyName = "MaChatLieu";
-            this.maChatLieuDataGridViewTextBoxColumn.HeaderText = "MaChatLieu";
-            this.maChatLieuDataGridViewTextBoxColumn.Name = "maChatLieuDataGridViewTextBoxColumn";
-            // 
-            // soLuongDataGridViewTextBoxColumn
-            // 
-            this.soLuongDataGridViewTextBoxColumn.DataPropertyName = "SoLuong";
-            this.soLuongDataGridViewTextBoxColumn.HeaderText = "SoLuong";
-            this.soLuongDataGridViewTextBoxColumn.Name = "soLuongDataGridViewTextBoxColumn";
-            // 
-            // donGiaNhapDataGridViewTextBoxColumn
-            // 
-            this.donGiaNhapDataGridViewTextBoxColumn.DataPropertyName = "DonGiaNhap";
-            this.donGiaNhapDataGridViewTextBoxColumn.HeaderText = "DonGiaNhap";
-            this.donGiaNhapDataGridViewTextBoxColumn.Name = "donGiaNhapDataGridViewTextBoxColumn";
-            // 
-            // diaChiNhapDataGridViewTextBoxColumn
-            // 
-            this.diaChiNhapDataGridViewTextBoxColumn.DataPropertyName = "DiaChiNhap";
-            this.diaChiNhapDataGridViewTextBoxColumn.HeaderText = "DiaChiNhap";
-            this.diaChiNhapDataGridViewTextBoxColumn.Name = "diaChiNhapDataGridViewTextBoxColumn";
-            // 
-            // tongTienDataGridViewTextBoxColumn
-            // 
-            this.tongTienDataGridViewTextBoxColumn.DataPropertyName = "TongTien";
-            this.tongTienDataGridViewTextBoxColumn.HeaderText = "TongTien";
-            this.tongTienDataGridViewTextBoxColumn.Name = "tongTienDataGridViewTextBoxColumn";
-            // 
-            // ngayNhapDataGridViewTextBoxColumn
-            // 
-            this.ngayNhapDataGridViewTextBoxColumn.DataPropertyName = "NgayNhap";
-            this.ngayNhapDataGridViewTextBoxColumn.HeaderText = "NgayNhap";
-            this.ngayNhapDataGridViewTextBoxColumn.Name = "ngayNhapDataGridViewTextBoxColumn";
-            // 
             // nhapKhoBindingSource
             // 
             this.nhapKhoBindingSource.DataMember = "NhapKho";
-            
-            // 
-            // dbCuaHang_ThachCaoDataSet
-            // 
-            
-           
             // 
             // bthuy
             // 
@@ -376,9 +302,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(18, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Mã Chất Liệu";
+            this.label3.Text = "Tên Chất Liệu";
             // 
             // label4
             // 
@@ -418,10 +344,6 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "Nhập Kho";
             // 
-            // nhapKhoTableAdapter
-            // 
-            
-            // 
             // formNhapKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,7 +365,6 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhapKhoBindingSource)).EndInit();
-           
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
