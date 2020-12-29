@@ -38,7 +38,13 @@ namespace QuanLi_CuaHangThachCao
             btthem.Enabled = true;
             btsua.Enabled = true;
             btXoa.Enabled = true;
-            btLuu.Enabled = false;
+            btLuu.Enabled = false;          
+            //btnThemSp.Enabled = false;
+            //btnSuaSP.Enabled = false;
+            //btnXoaSp.Enabled = false;
+            //txtDonGiaBan.Enabled = false;
+            //txtSoLuong.Enabled = false;
+            //cbxTenHang.Enabled = false;
             btthoat.Text = "Thoát";
         }
         private void SetEditing()
@@ -48,6 +54,12 @@ namespace QuanLi_CuaHangThachCao
             btXoa.Enabled = false;
             btsua.Enabled = false;           
             btLuu.Enabled = true;
+            btnThemSp.Enabled = true;
+            btnSuaSP.Enabled = true;
+            btnXoaSp.Enabled = true;
+            txtDonGiaBan.Enabled = true;
+            txtSoLuong.Enabled = true;
+            cbxTenHang.Enabled = true;
             btthoat.Text = "Hủy";
         }
         private void ResetTextBox()//Reset trắng nội dung các TextBox, gán dữ liệu ban đầu cho RadioButton, DateTimPickup
@@ -63,8 +75,8 @@ namespace QuanLi_CuaHangThachCao
             TrangThai = FState.IsViewing;
             LoadCBoxHangHoa();
             LoadCBoxMaKhach();
-            showData();
-            showDataCTHD();
+            showData();           
+            
         }
 
         private void LoadCBoxHangHoa()
@@ -75,7 +87,10 @@ namespace QuanLi_CuaHangThachCao
             cbxTenHang.DataSource = dt;              
             cbxTenHang.ValueMember = "MaHang";
             cbxTenHang.DisplayMember = "TenHang";
-            cbxTenHang.Show();           
+            cbxTenHang.Show();
+            DongiaBan();
+
+
         }
 
         private void LoadCBoxMaKhach()
@@ -100,7 +115,8 @@ namespace QuanLi_CuaHangThachCao
                 //groupBox1.Enabled = true;
                 AutoUp();
                 dgvHoaDon.Enabled = false;
-                cbTenKhach.Focus();
+                dgvListSP.Refresh();
+                
             }
             catch (Exception E)
             {
@@ -164,6 +180,9 @@ namespace QuanLi_CuaHangThachCao
                 showData();
                 ResetTextBox();
                 SetViewing();
+
+                int R = dgvHoaDon.Rows.Count-1;
+                tbMaHD.Text = dgvHoaDon.Rows[R].ToString();
             }
             else
             {
@@ -175,7 +194,7 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                groupBox1.Enabled = true; // Groupbox thông tin KH mở
+                GrChiTietHD.Enabled = true; // Groupbox thông tin KH mở
                 int VT=0;
                 if (VT != null && VT >= 0)
                 {
@@ -185,7 +204,8 @@ namespace QuanLi_CuaHangThachCao
                     cbTenKhach.Text = dgvHoaDon.Rows[VT].Cells[2].Value.ToString();
                     tbMaNV.Text = dgvHoaDon.Rows[VT].Cells[3].Value.ToString();
                     date.Text = dgvHoaDon.Rows[VT].Cells[4].Value.ToString();
-                    showDataCTHD(); 
+                    showDataCTHD();
+                    TongTien();
                 }
             }
             catch (Exception a)
@@ -233,25 +253,32 @@ namespace QuanLi_CuaHangThachCao
 
         private void btnThemSp_Click(object sender, EventArgs e)
         {
-            float DHB, Tong;
-            int SL;
-            DHB = float.Parse(txtDonGiaBan.Text);
-            SL = int.Parse(txtSoLuong.Text);
-            Tong = DHB * SL;
-            if (txtSoLuong.Text !="")
+
+            try
             {
-                
-                string sql = "INSERT INTO ChiTietHD VALUES(N'" + tbMaHD.Text + "','" + cbxTenHang.SelectedValue.ToString() + "',N'" + cbxTenHang.Text + "',N'" + txtSoLuong.Text + "',N'" +Tong+ "')";
-                condb.ExecuteNonQuery(sql);
-                MessageBox.Show("Thêm Thành Công!!");
-                showDataCTHD();
-                ResetTextBox();
-                SetViewing();
+                if (txtSoLuong.Text != "")
+                {
+                    float DHB, Tong;
+                    int SL;
+                    DHB = float.Parse(txtDonGiaBan.Text);
+                    SL = int.Parse(txtSoLuong.Text);
+                    Tong = DHB * SL;
+                    string sql = "INSERT INTO ChiTietHD VALUES(N'" + tbMaHD.Text + "','" + cbxTenHang.SelectedValue.ToString() + "',N'" + cbxTenHang.Text + "',N'" + txtSoLuong.Text + "',N'" + Tong + "')";
+                    condb.ExecuteNonQuery(sql);
+                    showDataCTHD();
+                    //ResetTextBox();
+                    //SetViewing();
+                }
+                else
+                {
+                    MessageBox.Show("Hãy nhập Số Lượng !!");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Hãy nhập thông tin !!");
+                MessageBox.Show("Mặt Hàng đã tồn tại!!!");
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -285,18 +312,160 @@ namespace QuanLi_CuaHangThachCao
             
         }
 
-        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        
+
+        private void btXoa_Click(object sender, EventArgs e)
         {
-            
-                //string sql = "SELECT ct.MaHDBan,ct.MaHang,ct.TenHang,ct.SoLuong,ct.TongTien FROM ChiTietHD ct WHERE ct.MaHDBan = '"+tbMaHD.Text+"'";
-                //condb.ExcuteQuery(sql);
-                //DataTable dt = condb.getDataTable(sql);
-                //dgvListSP.DataSource = dt;
-                //dgvListSP.Show();
-            
-            
+            try
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn xóa " + tbMaHD.Text + "Không ?", "Thông Báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    condb.connect();
+                    string sql = "DELETE FROM ChiTietHD  Where MaHDBan='" + tbMaHD.Text + "' " +
+                        "DELETE FROM HDBan Where MaHDBan = '" + tbMaHD.Text + "'"  ;
+
+
+                    condb.ExecuteNonQuery(sql);
+                    MessageBox.Show("Xóa Thành Công!!");
+                    showData();
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi dữ liệu");
+            }
+        }
+
+        private void btthoat_Click(object sender, EventArgs e)
+        {
+            if (TrangThai == FState.IsViewing)
+            {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    this.Hide();
+                    Main main = new Main();
+                    main.Show();
+                }
+
+                
+
+
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn HỦY  ?", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    TrangThai = FState.IsViewing;
+                    
+                }
+            }
+        }
+
+        private void cbxTenHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DongiaBan();
+        }
+        private void DongiaBan()
+        {
+            SqlConnection Conn = new SqlConnection(condb.Path());
+            Conn.Open();
+            string MaHang = cbxTenHang.SelectedValue.ToString();
+            string sqlquery = "SELECT DonGiaBan From Hang WHERE MaHang = '" + MaHang + "'";
+
+            SqlCommand command = new SqlCommand(sqlquery, Conn);
+
+            SqlDataReader sdr = command.ExecuteReader();
+
+            while (sdr.Read())
+            {
+                txtDonGiaBan.Text = sdr["DonGiaBan"].ToString();
+            }
+        }
+
+        private void dgvListSP_SelectionChanged(object sender, EventArgs e)
+        {
+            dgvListSP_CellContentClick();
+        }
+
+        private void dgvListSP_CellContentClick()
+        {
+            int VT = 0;
+            VT = dgvListSP.CurrentCell.RowIndex;
+            if(VT != -1)
+            {
+                cbxTenHang.Text = dgvListSP.Rows[VT].Cells[1].Value.ToString();
+                txtSoLuong.Text = dgvListSP.Rows[VT].Cells[2].Value.ToString();
+                txtDonGiaBan.Text = dgvListSP.Rows[VT].Cells[3].Value.ToString();
+            }
+                      
+            //showDataCTHD();
+        }
+
+        private void btnSuaSP_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                condb.connect();
+                string sql = "Update ChiTietHD  Set SoLuong =N'" + txtSoLuong.Text + "'Where MaHang ='" + cbxTenHang.SelectedValue.ToString() + "'";
+                condb.ExecuteNonQuery(sql);
+                MessageBox.Show("Sửa Thành Công");
+                showDataCTHD();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void btnXoaSp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Bạn có muốn xóa " + cbxTenHang.Text + "Không ?", "Thông Báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    condb.connect();
+                    string sql = "DELETE FROM ChiTietHD  Where MaHang='" + cbxTenHang.SelectedValue.ToString() + "' " ;                      
+                    condb.ExecuteNonQuery(sql);
+                    MessageBox.Show("Xóa Thành Công!!");
+                    showDataCTHD();
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi dữ liệu");
+            }
         }
 
         
+
+        private void TongTien()
+        {
+            SqlConnection Conn = new SqlConnection(condb.Path());
+            Conn.Open();
+            string MaHang = cbxTenHang.SelectedValue.ToString();
+            string sql = " SELECT SUM(TongTien) AS Total FROM ChiTietHD ct Where MaHDBan = '" + tbMaHD.Text + "' ";
+
+            SqlCommand command = new SqlCommand(sql, Conn);
+
+            SqlDataReader sdr = command.ExecuteReader();
+
+            while (sdr.Read())
+            {
+                lbTongTien.Text = sdr["Total"].ToString();
+            }
+        }
+
+        
+
+        private void dgvListSP_DataSourceChanged(object sender, EventArgs e)
+        {
+            TongTien();
+        }
     }
 }
