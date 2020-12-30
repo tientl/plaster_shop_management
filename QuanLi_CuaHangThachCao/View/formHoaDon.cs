@@ -443,6 +443,8 @@ namespace QuanLi_CuaHangThachCao
 
             while (sdr.Read())
             {
+                //CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+                //string a = double.Parse("12345").ToString("#,###", cul.NumberFormat);
                 lbTongTien.Text = sdr["Total"].ToString();
             }
         }

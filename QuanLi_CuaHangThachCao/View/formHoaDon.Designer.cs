@@ -355,6 +355,7 @@
             this.lbTongTien.Size = new System.Drawing.Size(19, 24);
             this.lbTongTien.TabIndex = 50;
             this.lbTongTien.Text = "0";
+            
             // 
             // txtDonGiaBan
             // 
