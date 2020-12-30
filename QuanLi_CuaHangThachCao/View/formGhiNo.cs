@@ -38,7 +38,10 @@ namespace QuanLi_CuaHangThachCao
             btsua.Enabled = true;
             btxoa.Enabled = true;
             btLuu.Enabled = false;
-
+            btThemTT.Enabled = true;
+            btSuaTT.Enabled = true;
+            btXoaTT.Enabled = true;
+            
             btthoat.Text = "Thoát";
         }
         private void SetEditing()
@@ -47,7 +50,10 @@ namespace QuanLi_CuaHangThachCao
             btthem.Enabled = false;
             btxoa.Enabled = false;
             btsua.Enabled = false;
-            btLuu.Enabled = true;           
+            btLuu.Enabled = true;
+            btThemTT.Enabled = false;
+            btSuaTT.Enabled = false;
+            btXoaTT.Enabled = false;
             btthoat.Text = "Hủy";
         }
         private void ResetTextBox()//Reset trắng nội dung các TextBox, gán dữ liệu ban đầu cho RadioButton, DateTimPickup
@@ -57,7 +63,7 @@ namespace QuanLi_CuaHangThachCao
             tbMaNV.Text = "";
             tbMaNV.Clear();
             tbTienDaTra.Clear();
-            tbTienConLai.Clear();
+            
 
         }
         public formGhiNo()
@@ -65,7 +71,9 @@ namespace QuanLi_CuaHangThachCao
             InitializeComponent();
             TrangThai = FState.IsViewing;
             showData();
+            
             LoadCBoxMaHD();
+            
         }
 
         public void showData()
@@ -81,6 +89,19 @@ namespace QuanLi_CuaHangThachCao
             }
             dgvGhiNo.Columns[dgvGhiNo.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+        public void showDataCTGhiNo()
+        {
+            string sql = "SELECT ct.MaHDBan,ct.TienTra,ct.NgayTra,ct.TienConLai FROM ChiTietGhiNo ct,GhiNo n WHERE ct.MaHDBan = n.MaHDBan AND ct.MaHDBan = '" + cbxMaHD.Text+"'";
+            DataTable dt = condb.getDataTable(sql);
+            dgvCTGhiNo.DataSource = dt;
+            dgvCTGhiNo.Show();
+            // Autosize table
+            for (int i = 0; i < dgvCTGhiNo.Columns.Count - 1; i++)
+            {
+                dgvCTGhiNo.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+            dgvCTGhiNo.Columns[dgvCTGhiNo.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
 
         private void LoadCBoxMaHD()
         {
@@ -93,6 +114,7 @@ namespace QuanLi_CuaHangThachCao
             cbxTenKhach.DisplayMember = "TenKhach";
             cbxMaHD.Show();
             cbxTenKhach.Show();
+            
         }
 
         private void btthem_Click(object sender, EventArgs e)
@@ -104,16 +126,15 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                if (tbTienDaTra.Text != "" && tbMaNV.Text != "")
+                if (tbTienTra.Text != "" && tbMaNV.Text != "")
                 {
 
                     condb.connect();
-                    string sql1 = "select * from TongtienHoaDon where MaHDBan = '" + cbxMaHD.Text + "' ";
-                    DataTable dt = condb.getDataTable(sql1);
-                    string SUM = dt.Rows[0][1].ToString();
-                    float TienCL = float.Parse(SUM) - float.Parse(tbTienDaTra.Text);
-                    tbTienConLai.Text = TienCL.ToString();
-                    string sql = "INSERT INTO GhiNo VALUES(N'" + cbxMaHD.Text + "',N'" + cbxTenKhach.Text + "',N'" + tbMaNV.Text + "',N'" + tbTienDaTra.Text + "',CONVERT(DATE,'" + dateNgayTra.Value + "',103),N'" + TienCL + "')";
+                    
+                    float TienCL = float.Parse(tbTongTien.Text) - float.Parse(tbTienTra.Text);
+                    lbTongTien.Text = TienCL.ToString();
+                    string sql = "INSERT INTO GhiNo VALUES(N'" + cbxMaHD.Text + "',N'" + cbxTenKhach.Text + "',N'" + tbMaNV.Text + "',N'" + TienCL + "')" +
+                        "INSERT INTO ChiTietGhiNo VALUES(N'" + cbxMaHD.Text + "',N'" + tbTienTra.Text + "',CONVERT(date,'" + dateNgayTra.Text + "',103),N'" + TienCL + "')";
                     condb.ExecuteNonQuery(sql);
                     MessageBox.Show("Thêm Thành Công!!");
 
@@ -137,13 +158,17 @@ namespace QuanLi_CuaHangThachCao
         private void dgvGhiNo_SelectionChanged(object sender, EventArgs e)
         {
             int VT = 0;
-            VT = dgvGhiNo.CurrentCell.RowIndex;
-            cbxMaHD.Text = dgvGhiNo.Rows[VT].Cells[0].Value.ToString();
-            cbxTenKhach.Text = dgvGhiNo.Rows[VT].Cells[1].Value.ToString();
-            tbMaNV.Text = dgvGhiNo.Rows[VT].Cells[2].Value.ToString();
-            tbTienDaTra.Text = dgvGhiNo.Rows[VT].Cells[3].Value.ToString();
-            dateNgayTra.Text = dgvGhiNo.Rows[VT].Cells[4].Value.ToString();
-            tbTienConLai.Text = dgvGhiNo.Rows[VT].Cells[5].Value.ToString();
+            if (VT != null && VT >= 0)
+            {
+                VT = dgvGhiNo.CurrentCell.RowIndex;
+                cbxMaHD.Text = dgvGhiNo.Rows[VT].Cells[0].Value.ToString();
+                cbxTenKhach.Text = dgvGhiNo.Rows[VT].Cells[1].Value.ToString();
+                tbMaNV.Text = dgvGhiNo.Rows[VT].Cells[2].Value.ToString();
+                lbTongTien.Text = dgvGhiNo.Rows[VT].Cells[3].Value.ToString();
+                showDataCTGhiNo();
+            }
+
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -161,7 +186,7 @@ namespace QuanLi_CuaHangThachCao
                     DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        int TienCL = Int32.Parse(tbTienConLai.Text) - Int32.Parse(tbTienDaTra.Text);
+                        int TienCL = Int32.Parse(lbTongTien.Text) - Int32.Parse(tbTienDaTra.Text);
                         condb.connect();
                         string sql = "Update GhiNo Set TienDaTra =N'" + tbTienDaTra.Text + "', NgayTra =CONVERT(DATE,'" + dateNgayTra.Value + "',103),TienConLai = N'" + TienCL + "' Where MaHDBan ='" + cbxMaHD.Text + "'";
                         condb.ExecuteNonQuery(sql);
@@ -174,7 +199,7 @@ namespace QuanLi_CuaHangThachCao
                 {
                     MessageBox.Show("Hãy nhập thông tin cần SỬA !!");
                 }
-                if (Int32.Parse(tbTienConLai.Text) < 1)
+                if (Int32.Parse(lbTongTien.Text) < 1)
                 {
                     DialogResult result = MessageBox.Show("Bạn có muốn Sửa " + cbxMaHD.Text + " Không ?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
@@ -194,7 +219,7 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
-                if (Int32.Parse(tbTienConLai.Text) < 1)
+                if (Int32.Parse(lbTongTien.Text) < 1)
                 {
                     DialogResult result = MessageBox.Show("Bạn có muốn xóa " + cbxMaHD.Text + " Không ?", "Thông Báo", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
@@ -263,7 +288,7 @@ namespace QuanLi_CuaHangThachCao
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(tbTienConLai.Text == "0")
+            if(lbTongTien.Text == "0")
             {
                 string sql = "Update HDBan Set TrangThai = N'Thanh Toán Xong'Where MaHDBan ='" + cbxMaHD.Text + "'";
                 condb.ExecuteNonQuery(sql);
@@ -273,5 +298,70 @@ namespace QuanLi_CuaHangThachCao
                 SetViewing();
             }
         }
+        private void TongTien()
+        {
+            SqlConnection Conn = new SqlConnection(condb.Path());
+            Conn.Open();
+            
+            string sql = " SELECT SUM(TongTien) AS Total FROM ChiTietHD Where MaHDBan = '" + cbxMaHD.Text + "' ";
+
+            SqlCommand command = new SqlCommand(sql, Conn);
+
+            SqlDataReader sdr = command.ExecuteReader();
+            
+            while (sdr.Read())
+            {
+                
+                tbTongTien.Text = sdr["Total"].ToString();
+            }
+        }
+        
+
+        private void cbxMaHD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TongTien();
+        }
+
+        
+
+        private void btThemTT_Click(object sender, EventArgs e)
+        {
+            
+            if (tbTienTra.Text != "" )
+            {
+                condb.connect();                 
+                int TienCL = Int32.Parse(lbTongTien.Text) - Int32.Parse(tbTienTra.Text);
+                if(TienCL < 1)
+                {
+                    lbTongTien.Text = "0";
+                    string sql = "INSERT INTO ChiTietGhiNo VALUES(N'" + cbxMaHD.Text + "',N'" + tbTienTra.Text + "',CONVERT(DATE,'" + dateNgayTra.Value + "',103),N'" + lbTongTien.Text + "')" +
+                            "Update GhiNo Set TienConLai = '" + lbTongTien.Text + "' Where MaHDBan ='" + cbxMaHD.Text + "'";
+                    condb.ExecuteNonQuery(sql);
+                }
+                else
+                {
+                    lbTongTien.Text = TienCL.ToString();
+                    string sql = "INSERT INTO ChiTietGhiNo VALUES(N'" + cbxMaHD.Text + "',N'" + tbTienTra.Text + "',CONVERT(DATE,'" + dateNgayTra.Value + "',103),N'" + TienCL + "')" +
+                            "Update GhiNo Set TienConLai = '" + TienCL + "' Where MaHDBan ='" + cbxMaHD.Text + "'";
+                    condb.ExecuteNonQuery(sql);
+                }    
+                
+                
+                MessageBox.Show("Thêm Thành Công!!");
+                showDataCTGhiNo();
+                showData();
+                ResetTextBox();
+                TrangThai = FState.IsViewing;
+                SetViewing();
+
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập thông tin !!");
+            }
+            
+        }
+
+        
     }
 }

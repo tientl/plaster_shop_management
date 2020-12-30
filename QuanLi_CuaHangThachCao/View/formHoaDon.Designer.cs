@@ -355,7 +355,6 @@
             this.lbTongTien.Size = new System.Drawing.Size(19, 24);
             this.lbTongTien.TabIndex = 50;
             this.lbTongTien.Text = "0";
-            
             // 
             // txtDonGiaBan
             // 
@@ -465,6 +464,7 @@
             this.btthem.TabIndex = 54;
             this.btthem.Text = "Thêm";
             this.btthem.UseVisualStyleBackColor = true;
+            this.btthem.Click += new System.EventHandler(this.btthem_Click);
             // 
             // btsua
             // 
@@ -474,6 +474,7 @@
             this.btsua.TabIndex = 55;
             this.btsua.Text = "Sửa";
             this.btsua.UseVisualStyleBackColor = true;
+            this.btsua.Click += new System.EventHandler(this.btsua_Click);
             // 
             // btthoat
             // 
@@ -483,6 +484,7 @@
             this.btthoat.TabIndex = 57;
             this.btthoat.Text = "Thoát";
             this.btthoat.UseVisualStyleBackColor = true;
+            this.btthoat.Click += new System.EventHandler(this.btthoat_Click);
             // 
             // btXoa
             // 
@@ -492,6 +494,7 @@
             this.btXoa.TabIndex = 56;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
             // 
             // groupBox3
             // 

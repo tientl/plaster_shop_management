@@ -176,9 +176,7 @@ namespace QuanLi_CuaHangThachCao
                 showData();
                 ResetTextBox();
                 SetViewing();
-
-                int R = dgvHoaDon.Rows.Count-1;
-                tbMaHD.Text = dgvHoaDon.Rows[R].ToString();
+                
             }
             else
             {
@@ -335,10 +333,6 @@ namespace QuanLi_CuaHangThachCao
                     Main main = new Main();
                     main.Show();
                 }
-
-                
-
-
             }
             else
             {
@@ -386,6 +380,7 @@ namespace QuanLi_CuaHangThachCao
                 cbxTenHang.Text = dgvListSP.Rows[VT].Cells[1].Value.ToString();
                 txtSoLuong.Text = dgvListSP.Rows[VT].Cells[2].Value.ToString();
                 txtDonGiaBan.Text = dgvListSP.Rows[VT].Cells[3].Value.ToString();
+                
             }
                       
             //showDataCTHD();
@@ -458,11 +453,20 @@ namespace QuanLi_CuaHangThachCao
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxTrangThai.Checked = true)
+            if(btLuu.Enabled == false)
             {
-                cbxTrangThai.Enabled = true;
-                btLuu.Enabled = true;
-            }    
+
+                if (checkBoxTrangThai.Checked = true)
+                {
+                    cbxTrangThai.Enabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng LƯU hóa đơn trước!!!");
+                checkBoxTrangThai.Checked = false;
+            }
+               
         }
 
         private void btformGhiNo_Click(object sender, EventArgs e)
@@ -475,15 +479,23 @@ namespace QuanLi_CuaHangThachCao
 
         private void cbxTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkBoxTrangThai.Checked == true)
+            try
             {
-                string sql = "Update HDBan Set TrangThai = N'" + cbxTrangThai.Text + "'Where MaHDBan ='" + tbMaHD.Text + "'";
-                condb.ExecuteNonQuery(sql);
-                MessageBox.Show("Thêm Thành Công!!");
-                showData();
-                ResetTextBox();
-                SetViewing();
+                if (checkBoxTrangThai.Checked == true)
+                {
+                    string sql = "Update HDBan Set TrangThai = N'" + cbxTrangThai.Text + "'Where MaHDBan ='" + tbMaHD.Text + "'";
+                    condb.ExecuteNonQuery(sql);
+                    MessageBox.Show("Thêm Thành Công!!");
+                    showData();
+                    checkBoxTrangThai.Checked = false;
+
+                }
             }
+            catch
+            {
+
+            }
+            
         }
 
         
