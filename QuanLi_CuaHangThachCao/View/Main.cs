@@ -84,13 +84,13 @@ namespace QuanLi_CuaHangThachCao
             this.Hide();
         }
 
-        private void btnChatLieu_Click(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
+            FormDangKy fDK = new FormDangKy();
+            this.Hide();
+            fDK.Show();
 
         }
     }

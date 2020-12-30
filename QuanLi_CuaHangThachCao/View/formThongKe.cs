@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace QuanLi_CuaHangThachCao.View
 {
-    public partial class formTaoTK : Form
+    public partial class formThongKe : Form
     {
-        public formTaoTK()
+        public formThongKe()
         {
             InitializeComponent();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }

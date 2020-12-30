@@ -85,7 +85,7 @@ namespace QuanLi_CuaHangThachCao
         private void LoadCBoxMaHD()
         {
             condb.connect();
-            string sql = "SELECT * FROM HDBan ";
+            string sql = "SELECT * FROM HDBan WHERE TrangThai = N'Nợ'";
             DataTable dt = condb.getDataTable(sql);
             cbxMaHD.DataSource = dt;
             cbxTenKhach.DataSource = dt;          
@@ -155,6 +155,7 @@ namespace QuanLi_CuaHangThachCao
         {
             try
             {
+
                 if (tbMaNV.Text != "" && tbTienDaTra.Text != "")
                 {
                     DialogResult result = MessageBox.Show("Bạn có muốn sửa không ?", "Thông báo", MessageBoxButtons.YesNo);
@@ -172,6 +173,15 @@ namespace QuanLi_CuaHangThachCao
                 else
                 {
                     MessageBox.Show("Hãy nhập thông tin cần SỬA !!");
+                }
+                if (Int32.Parse(tbTienConLai.Text) < 1)
+                {
+                    DialogResult result = MessageBox.Show("Bạn có muốn Sửa " + cbxMaHD.Text + " Không ?", "Thông Báo", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        string sql = "Update HDBan Set TrangThai = N'Thanh Toán Xong' Where MaHDBan ='" + cbxMaHD.Text + "'";
+                        condb.ExecuteNonQuery(sql);
+                    }
                 }
             }
             catch
@@ -226,6 +236,42 @@ namespace QuanLi_CuaHangThachCao
             DataTable dt = condb.getDataTable(sql);
             dgvGhiNo.DataSource = dt;
             dgvGhiNo.Show();
+        }
+
+        private void btthoat_Click(object sender, EventArgs e)
+        {
+            if (TrangThai == FState.IsViewing)
+            {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát ?", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    this.Hide();
+                    Main main = new Main();
+                    main.Show();
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn HỦY  ?", "Thông báo", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    TrangThai = FState.IsViewing;
+
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(tbTienConLai.Text == "0")
+            {
+                string sql = "Update HDBan Set TrangThai = N'Thanh Toán Xong'Where MaHDBan ='" + cbxMaHD.Text + "'";
+                condb.ExecuteNonQuery(sql);
+                MessageBox.Show("Thêm Thành Công!!");
+                showData();
+                ResetTextBox();
+                SetViewing();
+            }
         }
     }
 }

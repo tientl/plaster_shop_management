@@ -59,13 +59,14 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // btnTaiKhoan
             // 
             resources.ApplyResources(this.btnTaiKhoan, "btnTaiKhoan");
             this.btnTaiKhoan.Name = "btnTaiKhoan";
             this.btnTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
             // btnKho
             // 

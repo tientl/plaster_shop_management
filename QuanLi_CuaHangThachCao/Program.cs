@@ -17,7 +17,7 @@ namespace QuanLi_CuaHangThachCao
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formGhiNo());
+            Application.Run(new FormLogin());
         }
     }
 }

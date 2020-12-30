@@ -52,6 +52,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbCuaHang_ThachCaoDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="View\FormDangKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDangKy.Designer.cs">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\formGhiNo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,11 +102,11 @@
     </Compile>
     <Compile Include="HangHoa.cs" />
     <Compile Include="Khach.cs" />
-    <Compile Include="View\formTaoTK.cs">
+    <Compile Include="View\formThongKe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\formTaoTK.Designer.cs">
-      <DependentUpon>formTaoTK.cs</DependentUpon>
+    <Compile Include="View\formThongKe.Designer.cs">
+      <DependentUpon>formThongKe.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
@@ -110,6 +116,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\FormDangKy.resx">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\formGhiNo.resx">
       <DependentUpon>formGhiNo.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,8 +140,8 @@
     <EmbeddedResource Include="View\formNhapKho.resx">
       <DependentUpon>formNhapKho.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\formTaoTK.resx">
-      <DependentUpon>formTaoTK.cs</DependentUpon>
+    <EmbeddedResource Include="View\formThongKe.resx">
+      <DependentUpon>formThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

@@ -166,10 +166,11 @@ namespace QuanLi_CuaHangThachCao
 
         private void btLuu_Click(object sender, EventArgs e)
         {
-            if (tbMaHD.Text != "" && cbMaKhach.Text != "" && cbTenKhach.Text != "" && tbMaNV.Text != "")
+            
+             if (tbMaHD.Text != "" && cbMaKhach.Text != "" && cbTenKhach.Text != "" && tbMaNV.Text != "")
             {
 
-                string sql = "INSERT INTO HDBan VALUES(N'" + tbMaHD.Text + "','" + cbMaKhach.Text + "',N'" + cbTenKhach.Text + "',N'" + tbMaNV.Text + "',CONVERT(DATE,'" + date.Value + "',103))";
+                string sql = "INSERT INTO HDBan VALUES(N'" + tbMaHD.Text + "','" + cbMaKhach.Text + "',N'" + cbTenKhach.Text + "',N'" + tbMaNV.Text + "',CONVERT(DATE,'" + date.Value + "',103),N'"+cbxTrangThai.Text+"')";
                 condb.ExecuteNonQuery(sql);
                 MessageBox.Show("Thêm Thành Công!!");
                 showData();
@@ -183,6 +184,7 @@ namespace QuanLi_CuaHangThachCao
             {
                 MessageBox.Show("Hãy nhập thông tin !!");
             }
+            
         }
 
         private void dgvHoaDon_SelectionChanged(object sender, EventArgs e)
@@ -451,5 +453,37 @@ namespace QuanLi_CuaHangThachCao
         {
             TongTien();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxTrangThai.Checked = true)
+            {
+                cbxTrangThai.Enabled = true;
+                btLuu.Enabled = true;
+            }    
+        }
+
+        private void btformGhiNo_Click(object sender, EventArgs e)
+        {
+            formGhiNo fGN = new formGhiNo();
+            this.Hide();
+            fGN.Show();
+            
+        }
+
+        private void cbxTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (checkBoxTrangThai.Checked == true)
+            {
+                string sql = "Update HDBan Set TrangThai = N'" + cbxTrangThai.Text + "'Where MaHDBan ='" + tbMaHD.Text + "'";
+                condb.ExecuteNonQuery(sql);
+                MessageBox.Show("Thêm Thành Công!!");
+                showData();
+                ResetTextBox();
+                SetViewing();
+            }
+        }
+
+        
     }
 }
