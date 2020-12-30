@@ -96,6 +96,12 @@
     </Compile>
     <Compile Include="HangHoa.cs" />
     <Compile Include="Khach.cs" />
+    <Compile Include="View\formTaoTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\formTaoTK.Designer.cs">
+      <DependentUpon>formTaoTK.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\formNhapKho.resx">
       <DependentUpon>formNhapKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\formTaoTK.resx">
+      <DependentUpon>formTaoTK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
