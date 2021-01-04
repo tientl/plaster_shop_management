@@ -20,7 +20,17 @@ namespace QuanLi_CuaHangThachCao
 
         private void Main_Load(object sender, EventArgs e)
         {
-            if (FormLogin.isAdmin) MessageBox.Show("Admin"); else MessageBox.Show("User");
+            if (FormLogin.isAdmin)
+            {
+                MessageBox.Show("Admin");
+            }
+            else if(!FormLogin.isAdmin)
+            {
+                MessageBox.Show("User");
+                btnTaiKhoan.Visible = false;
+                btnNhanVien.Visible = false;
+            }
+                
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -92,6 +102,25 @@ namespace QuanLi_CuaHangThachCao
             this.Hide();
             fDK.Show();
 
+        }
+
+        private void btThongKe_Click(object sender, EventArgs e)
+        {
+            formThongKe fTK = new formThongKe();
+            this.Hide();
+            fTK.Show();
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            FormLogin login = new FormLogin();
+            this.Hide();
+            login.Show();
+            
+        }
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

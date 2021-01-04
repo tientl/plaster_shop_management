@@ -123,7 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 20.25pt, style=Bold</value>
+    <value>Mongolian Baiti, 20.25pt, style=Bold</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -133,7 +133,7 @@
     <value>114, 22</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 31</value>
+    <value>611, 29</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -151,16 +151,166 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.Name" xml:space="preserve">
+    <value>btThongKe</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnTaiKhoan.Name" xml:space="preserve">
+    <value>btnTaiKhoan</value>
+  </data>
+  <data name="&gt;&gt;btnTaiKhoan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTaiKhoan.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnTaiKhoan.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnKho.Name" xml:space="preserve">
+    <value>btnKho</value>
+  </data>
+  <data name="&gt;&gt;btnKho.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnKho.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnKho.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnNhanVien.Name" xml:space="preserve">
+    <value>btnNhanVien</value>
+  </data>
+  <data name="&gt;&gt;btnNhanVien.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNhanVien.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnNhanVien.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnGhiNo.Name" xml:space="preserve">
+    <value>btnGhiNo</value>
+  </data>
+  <data name="&gt;&gt;btnGhiNo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGhiNo.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnGhiNo.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnHangHoa.Name" xml:space="preserve">
+    <value>btnHangHoa</value>
+  </data>
+  <data name="&gt;&gt;btnHangHoa.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnHangHoa.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnHangHoa.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;btnHoaDon.Name" xml:space="preserve">
+    <value>btnHoaDon</value>
+  </data>
+  <data name="&gt;&gt;btnHoaDon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnHoaDon.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnHoaDon.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 77</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>773, 370</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>THÔNG TIN</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btThongKe.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btThongKe.Location" type="System.Drawing.Point, System.Drawing">
+    <value>297, 212</value>
+  </data>
+  <data name="btThongKe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 47</value>
+  </data>
+  <data name="btThongKe.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btThongKe.Text" xml:space="preserve">
+    <value>Thống Kê</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.Name" xml:space="preserve">
+    <value>btThongKe</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btThongKe.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnTaiKhoan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnTaiKhoan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 255</value>
+    <value>297, 294</value>
   </data>
   <data name="btnTaiKhoan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 42</value>
+    <value>181, 46</value>
   </data>
   <data name="btnTaiKhoan.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -178,16 +328,16 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnTaiKhoan.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnKho.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnKho.Location" type="System.Drawing.Point, System.Drawing">
-    <value>524, 152</value>
+    <value>502, 212</value>
   </data>
   <data name="btnKho.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 42</value>
+    <value>175, 46</value>
   </data>
   <data name="btnKho.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -205,16 +355,19 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnKho.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="btnGhiNo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
   </data>
   <data name="btnGhiNo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnGhiNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 152</value>
+    <value>297, 47</value>
   </data>
   <data name="btnGhiNo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 42</value>
+    <value>380, 55</value>
   </data>
   <data name="btnGhiNo.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -232,16 +385,16 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnGhiNo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="btnNhanVien.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnNhanVien.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 152</value>
+    <value>502, 294</value>
   </data>
   <data name="btnNhanVien.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 42</value>
+    <value>175, 46</value>
   </data>
   <data name="btnNhanVien.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -265,10 +418,10 @@
     <value>NoControl</value>
   </data>
   <data name="btnHangHoa.Location" type="System.Drawing.Point, System.Drawing">
-    <value>524, 52</value>
+    <value>502, 126</value>
   </data>
   <data name="btnHangHoa.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 42</value>
+    <value>175, 54</value>
   </data>
   <data name="btnHangHoa.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -286,16 +439,19 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnHangHoa.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
+  </data>
+  <data name="btnHoaDon.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
   </data>
   <data name="btnHoaDon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnHoaDon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 52</value>
+    <value>80, 47</value>
   </data>
   <data name="btnHoaDon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 42</value>
+    <value>189, 293</value>
   </data>
   <data name="btnHoaDon.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -313,16 +469,16 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnHoaDon.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 52</value>
+    <value>297, 126</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 42</value>
+    <value>178, 54</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -340,33 +496,60 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+  <metadata name="dbCuaHang_ThachCaoDataSet11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="btnDangXuat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>621, 453</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 77</value>
+  <data name="btnDangXuat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 26</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>773, 350</value>
+  <data name="btnDangXuat.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="btnDangXuat.Text" xml:space="preserve">
+    <value>Đăng Xuất</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>THÔNG TIN</value>
+  <data name="&gt;&gt;btnDangXuat.Name" xml:space="preserve">
+    <value>btnDangXuat</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;btnDangXuat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnDangXuat.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnDangXuat.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnThoat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnThoat.Location" type="System.Drawing.Point, System.Drawing">
+    <value>717, 453</value>
+  </data>
+  <data name="btnThoat.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 26</value>
+  </data>
+  <data name="btnThoat.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnThoat.Text" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="&gt;&gt;btnThoat.Name" xml:space="preserve">
+    <value>btnThoat</value>
+  </data>
+  <data name="&gt;&gt;btnThoat.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnThoat.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnThoat.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -380,6 +563,12 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;dbCuaHang_ThachCaoDataSet11.Name" xml:space="preserve">
+    <value>dbCuaHang_ThachCaoDataSet11</value>
+  </data>
+  <data name="&gt;&gt;dbCuaHang_ThachCaoDataSet11.Type" xml:space="preserve">
+    <value>QuanLi_CuaHangThachCao.dbCuaHang_ThachCaoDataSet1, dbCuaHang_ThachCaoDataSet1.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>

@@ -105,7 +105,7 @@ namespace QuanLi_CuaHangThachCao.View
                     if (result == DialogResult.Yes)
                     {
                         condb.connect();
-                        string sql = "update TaiKhoan set UserName ='"+txtUserName.Text + "',Password ='"+txtPassword.Text+"' where TaiKhoan.ID_TK = '"+ dgvDangKy.Rows[VT].Cells[0].Value.ToString() + "' ";
+                        string sql = "update TaiKhoan set UserName ='"+txtUserName.Text + "',Password ='"+txtPassword.Text+"',Role = '"+cboRole.Text+"' where TaiKhoan.ID_TK = '"+ dgvDangKy.Rows[VT].Cells[0].Value.ToString() + "' ";
                         condb.ExecuteNonQuery(sql);
                         MessageBox.Show("Sửa Thành Công");
                         showData();
